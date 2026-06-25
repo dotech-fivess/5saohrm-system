@@ -1,0 +1,1048 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;0,900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Roboto',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#16241D}
+  ::-webkit-scrollbar{height:12px;width:12px}
+  ::-webkit-scrollbar-thumb{background:#c4cfc9;border-radius:8px;border:3px solid #E7EBE9}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.45}}
+  @keyframes shimmer{0%{background-position:-400px 0}100%{background-position:400px 0}}
+</style>
+</helmet>
+<div style="width:max-content;min-width:100%;min-height:100vh;box-sizing:border-box;padding:56px 48px 96px;background:#E7EBE9">
+
+  <!-- Masthead -->
+  <div style="max-width:1280px;margin:0 auto 8px;display:flex;align-items:flex-end;justify-content:space-between;gap:32px">
+    <div style="display:flex;align-items:center;gap:18px">
+      <div style="height:62px;padding:0 20px;border-radius:16px;background:#fff;border:1px solid #E2E8E5;display:flex;align-items:center;box-shadow:0 6px 20px rgba(44,104,201,.16)">
+        <img src="https://5sao.com.vn/images/common/5sao-logo-new.svg" alt="5Sao" style="height:36px" />
+      </div>
+      <div>
+        <div style="font-size:13px;font-weight:700;letter-spacing:.22em;color:#2C68C9">HỆ THỐNG NỘI BỘ</div>
+        <div style="font-size:30px;font-weight:900;letter-spacing:-.02em;color:#16345E;line-height:1.05">Hệ thống Quản trị Nội bộ</div>
+        <div style="font-size:14px;color:#5B6B63;margin-top:3px">Bộ thiết kế UI/UX · Nhân sự · Chấm công · Nghỉ phép · Dashboard</div>
+      </div>
+    </div>
+    <div style="text-align:right;padding-bottom:4px">
+      <div style="font-size:13px;color:#5B6B63">Design System v1.0</div>
+      <div style="font-size:13px;color:#5B6B63">20 màn hình · Mobile + Desktop</div>
+    </div>
+  </div>
+
+  <!-- contents bar -->
+  <div style="max-width:1280px;margin:0 auto 40px;display:flex;flex-wrap:wrap;gap:8px;padding-top:20px;border-top:1px solid #d3dbd7">
+    <span style="font-size:12.5px;font-weight:600;color:#5B6B63;padding:6px 0;margin-right:6px">Mục lục:</span>
+    <a href="#foundations" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Foundations</a>
+    <a href="#mod-auth" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Chung &amp; Xác thực</a>
+    <a href="#mod-hr" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Nhân sự</a>
+    <a href="#mod-att" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Chấm công</a>
+    <a href="#mod-leave" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Nghỉ phép</a>
+    <a href="#mod-dash" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Dashboard</a>
+    <a href="#mod-extra" style="font-size:12.5px;font-weight:600;color:#16345E;text-decoration:none;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 14px">Bổ sung &amp; Trạng thái</a>
+    <a href="5Sao Chấm công.dc.html" style="font-size:12.5px;font-weight:700;color:#fff;text-decoration:none;background:#F57F20;border-radius:999px;padding:6px 14px">▶ Prototype chấm công</a>
+  </div>
+
+<!-- ============ FOUNDATIONS ============ -->
+  <div id="foundations" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">00</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Foundations</h2>
+    <span style="font-size:13.5px;color:#5B6B63">Màu · Typography · Trạng thái · Component nền tảng</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="max-width:1280px;margin:0 auto 56px;background:#fff;border:1px solid #E2E8E5;border-radius:14px;padding:32px;box-shadow:0 1px 3px rgba(0,0,0,.04)">
+    <!-- Brand + semantic colors -->
+    <div style="font-size:13px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Bảng màu</div>
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:14px;margin-bottom:36px">
+      <div><div style="height:72px;border-radius:10px;background:#2C68C9"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Primary</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#2C68C9</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#F57F20"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Accent</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#F57F20</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#16345E"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Brand Dark</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#16345E</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#2E7D32"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Success</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#2E7D32</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#F9A825"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Warning</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#F9A825</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#D32F2F"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Danger</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#D32F2F</div></div>
+      <div><div style="height:72px;border-radius:10px;background:#5B6B63"></div><div style="font-size:13px;font-weight:700;color:#16345E;margin-top:8px">Neutral</div><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63">#5B6B63</div></div>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(8,1fr);gap:10px;margin-bottom:36px">
+      <div style="height:40px;border-radius:8px;background:#E7EEFB;border:1px solid #d3e1f7;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#2457A8">tint</div>
+      <div style="height:40px;border-radius:8px;background:#F4F7F5;border:1px solid #E2E8E5;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#5B6B63">app bg</div>
+      <div style="height:40px;border-radius:8px;background:#fff;border:1px solid #E2E8E5;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#5B6B63">surface</div>
+      <div style="height:40px;border-radius:8px;background:#E2E8E5;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#5B6B63">border</div>
+      <div style="height:40px;border-radius:8px;background:#16241D;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#fff">ink</div>
+      <div style="height:40px;border-radius:8px;background:#FEF4DC;border:1px solid #f6e6bd;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#a9791a">warn t</div>
+      <div style="height:40px;border-radius:8px;background:#FBE7E7;border:1px solid #f3cccc;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#b3261e">danger t</div>
+      <div style="height:40px;border-radius:8px;background:#E6F2E7;border:1px solid #cfe6d1;display:flex;align-items:center;justify-content:center;font-family:'Roboto Mono',monospace;font-size:11px;color:#2E7D32">succ t</div>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1.1fr 1fr;gap:40px">
+      <!-- Typography -->
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Typography — Roboto</div>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #eef2f0;padding-bottom:12px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;color:#9aa8a1;width:120px">H1 / 30 / 900</span><span style="font-size:30px;font-weight:900;color:#16345E;letter-spacing:-.02em">Chấm công hôm nay</span></div>
+          <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #eef2f0;padding-bottom:12px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;color:#9aa8a1;width:120px">H2 / 22 / 700</span><span style="font-size:22px;font-weight:700;color:#16345E">Danh sách nhân viên</span></div>
+          <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #eef2f0;padding-bottom:12px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;color:#9aa8a1;width:120px">Body / 15 / 400</span><span style="font-size:15px;color:#16241D">Nội dung chính, dễ đọc tiếng Việt có dấu.</span></div>
+          <div style="display:flex;align-items:baseline;gap:14px;border-bottom:1px solid #eef2f0;padding-bottom:12px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;color:#9aa8a1;width:120px">Label / 13 / 500</span><span style="font-size:13px;font-weight:500;color:#5B6B63">Nhãn trường nhập liệu</span></div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;color:#9aa8a1;width:120px">Mono / số liệu</span><span style="font-family:'Roboto Mono',monospace;font-size:15px;color:#16345E">08:02 · 8/8 · NV-0428</span></div>
+        </div>
+      </div>
+      <!-- Status + buttons -->
+      <div>
+        <div style="font-size:13px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Status badges</div>
+        <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:24px">
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:5px 12px"><span style="width:7px;height:7px;border-radius:50%;background:#2E7D32"></span>Hợp lệ / Duyệt</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:5px 12px"><span style="width:7px;height:7px;border-radius:50%;background:#F9A825"></span>Trễ / Sớm / Chờ</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:5px 12px"><span style="width:7px;height:7px;border-radius:50%;background:#D32F2F"></span>Quên / Từ chối</span>
+          <span style="display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#2457A8;background:#E7EEFB;border-radius:999px;padding:5px 12px"><span style="width:7px;height:7px;border-radius:50%;background:#2C68C9"></span>Online (ON)</span>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:16px">Buttons</div>
+        <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:20px">
+          <button style="font-family:inherit;font-size:14px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:10px 18px;cursor:pointer;box-shadow:0 2px 6px rgba(44,104,201,.3)">Nút chính</button>
+          <button style="font-family:inherit;font-size:14px;font-weight:600;color:#16345E;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 18px;cursor:pointer">Phụ</button>
+          <button style="font-family:inherit;font-size:14px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:9px;padding:10px 18px;cursor:pointer">Nguy hiểm</button>
+          <button style="font-family:inherit;font-size:14px;font-weight:600;color:#9aa8a1;background:#F0F3F1;border:none;border-radius:9px;padding:10px 18px;cursor:not-allowed">Disabled</button>
+        </div>
+        <div style="font-size:13px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.08em;margin-bottom:12px">Form fields</div>
+        <div style="display:flex;flex-direction:column;gap:8px;max-width:320px">
+          <div style="font-size:13px;font-weight:500;color:#5B6B63">Email công ty</div>
+          <div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px">an.nguyen@5sao.vn</div>
+          <div style="display:flex;gap:8px;margin-top:4px">
+            <span style="font-size:13px;font-weight:600;color:#2457A8;background:#E7EEFB;border:1px solid #c2d6f3;border-radius:999px;padding:6px 12px">Hà Nội — Trụ sở ✕</span>
+            <span style="font-size:13px;font-weight:600;color:#2457A8;background:#E7EEFB;border:1px solid #c2d6f3;border-radius:999px;padding:6px 12px">HCM — CN1 ✕</span>
+            <span style="font-size:13px;font-weight:600;color:#5B6B63;background:#F4F7F5;border:1px dashed #cdd6d1;border-radius:999px;padding:6px 12px">+ Thêm</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE A — CHUNG & XÁC THỰC ============ -->
+  <div id="mod-auth" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">01</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Chung &amp; Xác thực</h2>
+    <span style="font-size:13.5px;color:#5B6B63">S1 Đăng nhập · S2 Trang chủ theo vai trò · S3 Hồ sơ cá nhân</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S1 Login Desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S1</span> Đăng nhập <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:920px;height:540px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex">
+        <!-- brand panel -->
+        <div style="width:380px;background:linear-gradient(160deg,#2C68C9,#16345E);padding:44px 40px;display:flex;flex-direction:column;justify-content:space-between;color:#fff">
+          <div style="display:inline-flex;align-items:center;background:#fff;border-radius:12px;padding:9px 16px;align-self:flex-start"><img src="https://5sao.com.vn/images/common/5sao-logo-new.svg" alt="5Sao" style="height:28px" /></div>
+          <div>
+            <div style="font-size:28px;font-weight:900;line-height:1.15;letter-spacing:-.01em">Quản trị nội bộ<br>nhanh &amp; minh bạch.</div>
+            <div style="font-size:14px;color:rgba(255,255,255,.78);margin-top:14px;line-height:1.5">Chấm công, nghỉ phép và hồ sơ nhân sự trong một hệ thống duy nhất.</div>
+          </div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,.6)">© 2026 5Sao · Bảo mật &amp; phân quyền</div>
+        </div>
+        <!-- form -->
+        <div style="flex:1;padding:56px 52px;display:flex;flex-direction:column;justify-content:center">
+          <div style="font-size:24px;font-weight:900;color:#16345E">Đăng nhập</div>
+          <div style="font-size:14px;color:#5B6B63;margin-top:6px;margin-bottom:30px">Dùng email công ty và mật khẩu được cấp.</div>
+          <div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:7px">Email công ty</div>
+          <div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #2C68C9;border-radius:10px;padding:13px 14px;margin-bottom:18px;box-shadow:0 0 0 3px rgba(44,104,201,.12)">an.nguyen@5sao.vn</div>
+          <div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:7px">Mật khẩu</div>
+          <div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:13px 14px;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center"><span style="letter-spacing:3px">••••••••••</span><span style="font-size:12.5px;color:#2C68C9;font-weight:600">Hiện</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:24px"><label style="display:flex;align-items:center;gap:8px;font-size:13px;color:#5B6B63"><span style="width:16px;height:16px;border-radius:5px;background:#2C68C9;display:inline-flex;align-items:center;justify-content:center"><svg width="10" height="10" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>Ghi nhớ đăng nhập</label><span style="font-size:13px;color:#2C68C9;font-weight:600">Quên mật khẩu?</span></div>
+          <button style="font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:10px;padding:14px;cursor:pointer;box-shadow:0 4px 12px rgba(44,104,201,.3)">Đăng nhập</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- S1 Login Mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S1</span> Đăng nhập <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:540px;background:linear-gradient(165deg,#2C68C9,#16345E);border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px 22px 0;color:#fff;font-size:12px;font-weight:600"><span>9:41</span><span style="display:flex;gap:5px;align-items:center;opacity:.9">●●● ▾ ▮</span></div>
+        <div style="flex:1;display:flex;flex-direction:column;justify-content:center;align-items:center;padding:0 26px;color:#fff">
+          <div style="background:#fff;border-radius:16px;padding:12px 18px;margin-bottom:18px"><img src="https://5sao.com.vn/images/common/5sao-logo-new.svg" alt="5Sao" style="height:30px" /></div>
+          <div style="font-size:18px;font-weight:900">Hệ thống Nội bộ</div>
+          <div style="font-size:13px;color:rgba(255,255,255,.75);margin-bottom:28px">Đăng nhập để chấm công</div>
+        </div>
+        <div style="background:#fff;border-radius:26px 26px 0 0;padding:26px 24px 30px">
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:6px">Email công ty</div>
+          <div style="font-size:13.5px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:12px 13px;margin-bottom:14px">an.nguyen@5sao.vn</div>
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:6px">Mật khẩu</div>
+          <div style="font-size:13.5px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:12px 13px;margin-bottom:18px;letter-spacing:3px">••••••••</div>
+          <button style="width:100%;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:11px;padding:14px;box-shadow:0 4px 12px rgba(44,104,201,.3)">Đăng nhập</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S2 Home Desktop (Quản trị) -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S2</span> Trang chủ theo vai trò <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop · Quản trị</span></div>
+      <div style="width:1100px;height:680px;background:#F4F7F5;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex">
+        <!-- sidebar -->
+        <div style="width:212px;background:#16345E;padding:20px 14px;display:flex;flex-direction:column;color:#fff;flex:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 8px 22px">
+            <div style="width:32px;height:32px;border-radius:9px;background:#2C68C9;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.26L21.6 9l-4.8 4.6 1.2 6.6L12 17.1 6 20.2l1.2-6.6L2.4 9l6.7-.74L12 2z" fill="#fff"/></svg></div>
+            <span style="font-size:15px;font-weight:800;letter-spacing:.04em">5Sao HRM</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.12);border-radius:9px;padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">▦</span>Dashboard</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">◷</span>Chấm công</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">☷</span>Nhân sự</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">⊟</span>Nghỉ phép</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">⚙</span>Cấu hình</div>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px">
+            <div style="width:34px;height:34px;border-radius:50%;background:#2C68C9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">PH</div>
+            <div style="line-height:1.2"><div style="font-size:13px;font-weight:600">Phạm Hà</div><div style="font-size:11.5px;color:rgba(255,255,255,.6)">Quản trị</div></div>
+          </div>
+        </div>
+        <!-- main -->
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="height:60px;background:#fff;border-bottom:1px solid #E2E8E5;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex:none">
+            <div style="font-size:17px;font-weight:800;color:#16345E">Xin chào, Hà 👋</div>
+            <div style="display:flex;align-items:center;gap:14px">
+              <div style="font-size:13px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:9px;padding:8px 14px;width:240px;color:#9aa8a1">Tìm nhân viên, đơn từ…</div>
+              <div style="position:relative;font-size:18px">🔔<span style="position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;background:#D32F2F;border:1.5px solid #fff"></span></div>
+            </div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:24px 26px">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">Tổng nhân sự</div><div style="font-size:26px;font-weight:900;color:#16345E;margin-top:4px">248</div><div style="font-size:11.5px;color:#2E7D32;margin-top:2px">▲ 6 tháng này</div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">Đã chấm hôm nay</div><div style="font-size:26px;font-weight:900;color:#16345E;margin-top:4px">231</div><div style="font-size:11.5px;color:#5B6B63;margin-top:2px">93% nhân sự</div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">Đi trễ hôm nay</div><div style="font-size:26px;font-weight:900;color:#a9791a;margin-top:4px">12</div><div style="font-size:11.5px;color:#5B6B63;margin-top:2px">Cần theo dõi</div></div>
+              <div style="background:#16345E;border-radius:12px;padding:16px;color:#fff"><div style="font-size:12.5px;color:rgba(255,255,255,.7)">Chờ bạn duyệt</div><div style="font-size:26px;font-weight:900;margin-top:4px">8</div><div style="font-size:11.5px;color:#9DB9EC;margin-top:2px">Cấp cuối</div></div>
+            </div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr;gap:16px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:18px">
+                <div style="font-size:14px;font-weight:700;color:#16345E;margin-bottom:14px">Hàng chờ duyệt cấp cuối</div>
+                <div style="display:flex;flex-direction:column;gap:10px">
+                  <div style="display:flex;align-items:center;gap:12px;padding-bottom:11px;border-bottom:1px solid #eef2f0"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">TL</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Trần Lâm · Nghỉ bệnh 2 ngày</div><div style="font-size:12px;color:#5B6B63">QL đã duyệt · 24/06</div></div><span style="font-size:11.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Chờ</span></div>
+                  <div style="display:flex;align-items:center;gap:12px;padding-bottom:11px;border-bottom:1px solid #eef2f0"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">NH</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Ngô Huy · Bổ sung công (quên out)</div><div style="font-size:12px;color:#5B6B63">QL đã duyệt · 24/06</div></div><span style="font-size:11.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Chờ</span></div>
+                  <div style="display:flex;align-items:center;gap:12px"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">PT</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Phạm Thu · Nghỉ không lương 1 ngày</div><div style="font-size:12px;color:#5B6B63">QL đã duyệt · 23/06</div></div><span style="font-size:11.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Chờ</span></div>
+                </div>
+              </div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:18px">
+                <div style="font-size:14px;font-weight:700;color:#16345E;margin-bottom:14px">Lối tắt</div>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+                  <div style="background:#F4F7F5;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px">☷</div><div style="font-size:12.5px;font-weight:600;color:#16241D;margin-top:4px">Thêm nhân viên</div></div>
+                  <div style="background:#F4F7F5;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px">▦</div><div style="font-size:12.5px;font-weight:600;color:#16241D;margin-top:4px">Xem Dashboard</div></div>
+                  <div style="background:#F4F7F5;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px">◷</div><div style="font-size:12.5px;font-weight:600;color:#16241D;margin-top:4px">Bảng chấm công</div></div>
+                  <div style="background:#F4F7F5;border-radius:10px;padding:14px;text-align:center"><div style="font-size:22px">⚙</div><div style="font-size:12.5px;font-weight:600;color:#16241D;margin-top:4px">Cấu hình</div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S2 Home Mobile (Nhân viên) -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S2</span> Trang chủ <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile · Nhân viên</span></div>
+      <div style="width:300px;height:680px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:linear-gradient(160deg,#2C68C9,#2457A8);padding:14px 20px 22px;color:#fff">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:14px"><span>9:41</span><span style="opacity:.9">●●● ▾ ▮</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div><div style="font-size:13px;color:rgba(255,255,255,.8)">Chào buổi sáng,</div><div style="font-size:18px;font-weight:800">Nguyễn An</div></div>
+            <div style="width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;font-weight:700">NA</div>
+          </div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:16px;margin-top:-12px">
+          <div style="background:#fff;border-radius:16px;padding:18px;box-shadow:0 4px 14px rgba(22,52,94,.08);text-align:center;margin-bottom:14px">
+            <div style="font-size:12.5px;color:#5B6B63">Ca Hành chính · 08:00–17:00</div>
+            <div style="font-family:'Roboto Mono',monospace;font-size:34px;font-weight:500;color:#16345E;margin:6px 0">08:02:15</div>
+            <button style="width:100%;font-family:inherit;font-size:16px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:13px;padding:15px;box-shadow:0 4px 12px rgba(44,104,201,.3)">● Check-in ngay</button>
+            <div style="font-size:11.5px;color:#9aa8a1;margin-top:8px">📍 Trụ sở Hà Nội · GPS hợp lệ</div>
+          </div>
+          <div style="display:flex;gap:10px;margin-bottom:14px">
+            <div style="flex:1;background:#fff;border-radius:13px;padding:13px;text-align:center"><div style="font-size:20px">📝</div><div style="font-size:12px;font-weight:600;color:#16241D;margin-top:4px">Xin nghỉ</div></div>
+            <div style="flex:1;background:#fff;border-radius:13px;padding:13px;text-align:center"><div style="font-size:20px">⊕</div><div style="font-size:12px;font-weight:600;color:#16241D;margin-top:4px">Bổ sung công</div></div>
+            <div style="flex:1;background:#fff;border-radius:13px;padding:13px;text-align:center"><div style="font-size:20px">◷</div><div style="font-size:12px;font-weight:600;color:#16241D;margin-top:4px">Lịch sử</div></div>
+          </div>
+          <div style="background:#fff;border-radius:14px;padding:15px">
+            <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px">Công tháng 6</div>
+            <div style="display:flex;justify-content:space-between"><div style="text-align:center"><div style="font-size:18px;font-weight:800;color:#16345E">18.5</div><div style="font-size:11px;color:#5B6B63">Ngày công</div></div><div style="text-align:center"><div style="font-size:18px;font-weight:800;color:#a9791a">2</div><div style="font-size:11px;color:#5B6B63">Đi trễ</div></div><div style="text-align:center"><div style="font-size:18px;font-weight:800;color:#2457A8">1</div><div style="font-size:11px;color:#5B6B63">Online</div></div></div>
+          </div>
+        </div>
+        <div style="background:#fff;border-top:1px solid #E2E8E5;display:flex;justify-content:space-around;padding:9px 0 14px">
+          <div style="text-align:center;color:#2C68C9"><div style="font-size:18px">▦</div><div style="font-size:10.5px;font-weight:600">Trang chủ</div></div>
+          <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">◷</div><div style="font-size:10.5px">Chấm công</div></div>
+          <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">⊟</div><div style="font-size:10.5px">Nghỉ phép</div></div>
+          <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">☺</div><div style="font-size:10.5px">Cá nhân</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+
+    <!-- S3 My Profile Desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S3</span> Hồ sơ cá nhân của tôi <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:760px;height:540px;background:#F4F7F5;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden">
+        <div style="height:120px;background:linear-gradient(120deg,#2C68C9,#16345E)"></div>
+        <div style="padding:0 32px 28px;margin-top:-46px">
+          <div style="display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:24px">
+            <div style="display:flex;align-items:flex-end;gap:18px">
+              <div style="width:92px;height:92px;border-radius:22px;background:#fff;border:4px solid #fff;box-shadow:0 4px 14px rgba(0,0,0,.12);display:flex;align-items:center;justify-content:center;font-size:30px;font-weight:800;color:#2C68C9;background:#E7EEFB">NA</div>
+              <div style="padding-bottom:6px"><div style="font-size:20px;font-weight:800;color:#16345E">Nguyễn Văn An</div><div style="font-size:13.5px;color:#5B6B63">Nhân viên · Content · Phòng Marketing</div></div>
+            </div>
+            <button style="font-family:inherit;font-size:13.5px;font-weight:600;color:#16345E;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:9px 16px;margin-bottom:6px">Đổi mật khẩu</button>
+          </div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px">
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:18px">
+              <div style="font-size:12px;font-weight:700;color:#2C68C9;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Thông tin cơ bản</div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Mã NV</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">NV-0428</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Email</span><span style="font-size:13px;color:#16241D">an.nguyen@5sao.vn</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Điện thoại</span><span style="font-size:13px;color:#16241D">0903 555 428</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:13px;color:#5B6B63">Ngày sinh</span><span style="font-size:13px;color:#16241D">12/08/1996</span></div>
+            </div>
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:18px">
+              <div style="font-size:12px;font-weight:700;color:#2C68C9;text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Thông tin công việc</div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Phòng ban</span><span style="font-size:13px;color:#16241D">Marketing</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Loại HĐ</span><span style="font-size:13px;color:#16241D">Chính thức</span></div>
+              <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Ngày vào</span><span style="font-size:13px;color:#16241D">02/03/2024</span></div>
+              <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 0"><span style="font-size:13px;color:#5B6B63">Địa điểm</span><span style="font-size:12px;font-weight:600;color:#2457A8;background:#E7EEFB;border-radius:999px;padding:3px 9px">Trụ sở Hà Nội</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S3 My Profile Mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S3</span> Hồ sơ cá nhân <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:540px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:linear-gradient(160deg,#2C68C9,#16345E);padding:14px 20px 26px;color:#fff;text-align:center">
+          <div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:16px"><span>9:41</span><span style="opacity:.9">●●● ▾ ▮</span></div>
+          <div style="width:74px;height:74px;border-radius:22px;background:rgba(255,255,255,.18);margin:0 auto 10px;display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800">NA</div>
+          <div style="font-size:17px;font-weight:800">Nguyễn Văn An</div>
+          <div style="font-size:12.5px;color:rgba(255,255,255,.8)">NV-0428 · Marketing</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:16px;margin-top:-14px">
+          <div style="background:#fff;border-radius:14px;padding:6px 16px;margin-bottom:12px">
+            <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Email</span><span style="font-size:13px;color:#16241D">an.nguyen@5sao.vn</span></div>
+            <div style="display:flex;justify-content:space-between;padding:11px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:13px;color:#5B6B63">Điện thoại</span><span style="font-size:13px;color:#16241D">0903 555 428</span></div>
+            <div style="display:flex;justify-content:space-between;padding:11px 0"><span style="font-size:13px;color:#5B6B63">Loại HĐ</span><span style="font-size:13px;color:#16241D">Chính thức</span></div>
+          </div>
+          <div style="background:#fff;border-radius:14px;padding:4px 16px">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:16px">🔒</span><span style="flex:1;font-size:13.5px;color:#16241D">Đổi mật khẩu</span><span style="color:#cdd6d1">›</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:16px">🌐</span><span style="flex:1;font-size:13.5px;color:#16241D">Ngôn ngữ · Tiếng Việt</span><span style="color:#cdd6d1">›</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 0"><span style="font-size:16px">⏻</span><span style="flex:1;font-size:13.5px;color:#D32F2F;font-weight:600">Đăng xuất</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE B — NHÂN SỰ ============ -->
+  <div id="mod-hr" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">02</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Nhân sự</h2>
+    <span style="font-size:13.5px;color:#5B6B63">S4 Danh sách · S5 Chi tiết hồ sơ · S6 Tạo/sửa · S7 File hồ sơ · S8 Lịch sử · S9 Cấu hình danh mục</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S4 Employee list Desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S4</span> Danh sách nhân viên <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:1100px;height:700px;background:#F4F7F5;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex">
+        <div style="width:212px;background:#16345E;padding:20px 14px;display:flex;flex-direction:column;color:#fff;flex:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 8px 22px"><div style="width:32px;height:32px;border-radius:9px;background:#2C68C9;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.26L21.6 9l-4.8 4.6 1.2 6.6L12 17.1 6 20.2l1.2-6.6L2.4 9l6.7-.74L12 2z" fill="#fff"/></svg></div><span style="font-size:15px;font-weight:800">5Sao HRM</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">▦</span>Dashboard</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">◷</span>Chấm công</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.12);border-radius:9px;padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">☷</span>Nhân sự</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">⊟</span>Nghỉ phép</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px"><span style="width:18px;text-align:center">⚙</span>Cấu hình</div>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px"><div style="width:34px;height:34px;border-radius:50%;background:#2C68C9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">PH</div><div style="line-height:1.2"><div style="font-size:13px;font-weight:600">Phạm Hà</div><div style="font-size:11.5px;color:rgba(255,255,255,.6)">Quản trị</div></div></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="height:60px;background:#fff;border-bottom:1px solid #E2E8E5;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex:none"><div style="font-size:17px;font-weight:800;color:#16345E">Nhân sự</div><button style="font-family:inherit;font-size:13.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:9px 16px">+ Thêm nhân viên</button></div>
+          <div style="flex:1;overflow:hidden;padding:22px 26px">
+            <!-- filter bar -->
+            <div style="display:flex;gap:10px;margin-bottom:16px">
+              <div style="flex:1;font-size:13.5px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 14px">🔍 Tìm theo tên, mã NV, email…</div>
+              <div style="font-size:13.5px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 14px;display:flex;align-items:center;gap:8px">Phòng ban <span style="color:#9aa8a1">▾</span></div>
+              <div style="font-size:13.5px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 14px;display:flex;align-items:center;gap:8px">Địa điểm <span style="color:#9aa8a1">▾</span></div>
+              <div style="font-size:13.5px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 14px;display:flex;align-items:center;gap:8px">Trạng thái <span style="color:#9aa8a1">▾</span></div>
+            </div>
+            <!-- table -->
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;overflow:hidden">
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;background:#F4F7F5;border-bottom:1px solid #E2E8E5;font-size:12px;font-weight:700;color:#5B6B63;text-transform:uppercase;letter-spacing:.04em"><span>Nhân viên</span><span>Mã NV</span><span>Phòng ban</span><span>Địa điểm</span><span>Trạng thái</span><span></span></div>
+              <!-- rows -->
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;border-bottom:1px solid #f0f3f1;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">NA</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Nguyễn Văn An</div><div style="font-size:12px;color:#5B6B63">Content</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0428</span><span style="font-size:13px;color:#16241D">Marketing</span><span style="font-size:13px;color:#16241D">Hà Nội</span><span><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đang làm</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;border-bottom:1px solid #f0f3f1;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">TL</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Trần Lâm</div><div style="font-size:12px;color:#5B6B63">Dev</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0391</span><span style="font-size:13px;color:#16241D">IT</span><span style="font-size:13px;color:#16241D">HCM · CN1</span><span><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đang làm</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;border-bottom:1px solid #f0f3f1;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">LP</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Lê Thị Phương</div><div style="font-size:12px;color:#5B6B63">Sale</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0356</span><span style="font-size:13px;color:#16241D">Kinh doanh</span><span style="font-size:13px;color:#16241D">Hà Nội</span><span><span style="font-size:11.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Thử việc</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;border-bottom:1px solid #f0f3f1;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">NH</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Ngô Quang Huy</div><div style="font-size:12px;color:#5B6B63">Dev</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0312</span><span style="font-size:13px;color:#16241D">IT</span><span style="font-size:13px;color:#16241D">HCM · CN1</span><span><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đang làm</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;border-bottom:1px solid #f0f3f1;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#F0F3F1;color:#9aa8a1;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">VD</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Vũ Đức</div><div style="font-size:12px;color:#5B6B63">Content</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0288</span><span style="font-size:13px;color:#16241D">Marketing</span><span style="font-size:13px;color:#16241D">Đà Nẵng</span><span><span style="font-size:11.5px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:4px 10px">Tạm nghỉ</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+              <div style="display:grid;grid-template-columns:2.2fr 1fr 1.2fr 1.3fr 1fr 0.5fr;gap:12px;padding:13px 18px;align-items:center"><div style="display:flex;align-items:center;gap:11px"><div style="width:36px;height:36px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">ĐM</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Đặng Minh</div><div style="font-size:12px;color:#5B6B63">Trưởng phòng</div></div></div><span style="font-family:'Roboto Mono',monospace;font-size:12.5px;color:#5B6B63">NV-0102</span><span style="font-size:13px;color:#16241D">Kinh doanh</span><span style="font-size:13px;color:#16241D">Hà Nội</span><span><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đang làm</span></span><span style="color:#cdd6d1;text-align:right">⋯</span></div>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:16px"><span style="font-size:13px;color:#5B6B63">Hiển thị 1–6 trong 248 nhân viên</span><div style="display:flex;gap:6px"><span style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;height:32px;display:flex;align-items:center;justify-content:center">‹</span><span style="font-size:13px;font-weight:600;color:#fff;background:#2C68C9;border-radius:7px;width:32px;height:32px;display:flex;align-items:center;justify-content:center">1</span><span style="font-size:13px;color:#16241D;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;height:32px;display:flex;align-items:center;justify-content:center">2</span><span style="font-size:13px;color:#16241D;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;height:32px;display:flex;align-items:center;justify-content:center">3</span><span style="font-size:13px;color:#16241D;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;height:32px;display:flex;align-items:center;justify-content:center">›</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S5 Profile detail (4 tabs) -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S5</span> Chi tiết hồ sơ — 4 nhóm thông tin <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:740px;height:620px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:16px 26px;border-bottom:1px solid #E2E8E5;display:flex;align-items:center;justify-content:space-between">
+          <div style="font-size:12.5px;color:#9aa8a1">Nhân sự › <span style="color:#16241D;font-weight:600">Nguyễn Văn An</span></div>
+          <div style="display:flex;gap:8px"><button style="font-family:inherit;font-size:13px;font-weight:600;color:#16345E;background:#fff;border:1px solid #cdd6d1;border-radius:8px;padding:8px 14px">Chỉnh sửa</button><button style="font-family:inherit;font-size:13px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:8px;padding:8px 14px">Khóa tài khoản</button></div>
+        </div>
+        <div style="padding:22px 26px 0;display:flex;align-items:center;gap:16px">
+          <div style="width:64px;height:64px;border-radius:18px;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800">NA</div>
+          <div style="flex:1"><div style="font-size:19px;font-weight:800;color:#16345E">Nguyễn Văn An</div><div style="font-size:13px;color:#5B6B63">NV-0428 · Content · Marketing</div></div>
+          <span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:5px 12px">Đang làm</span>
+        </div>
+        <!-- tabs -->
+        <div style="display:flex;gap:4px;padding:18px 26px 0;border-bottom:1px solid #E2E8E5">
+          <div style="font-size:13.5px;color:#5B6B63;padding:10px 14px">Thông tin cơ bản</div>
+          <div style="font-size:13.5px;font-weight:700;color:#2C68C9;padding:10px 14px;border-bottom:2px solid #2C68C9">Thông tin công việc</div>
+          <div style="font-size:13.5px;color:#5B6B63;padding:10px 14px">Thông tin hệ thống</div>
+          <div style="font-size:13.5px;color:#5B6B63;padding:10px 14px">File hồ sơ</div>
+        </div>
+        <div style="flex:1;overflow:hidden;padding:22px 26px;background:#F8FAF9">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:18px">
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:10px;padding:13px 15px"><div style="font-size:12px;color:#5B6B63">Phòng ban</div><div style="font-size:14px;font-weight:600;color:#16241D;margin-top:3px">Marketing</div></div>
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:10px;padding:13px 15px"><div style="font-size:12px;color:#5B6B63">Vị trí · Chức vụ</div><div style="font-size:14px;font-weight:600;color:#16241D;margin-top:3px">Content · Nhân viên</div></div>
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:10px;padding:13px 15px"><div style="font-size:12px;color:#5B6B63">Loại hợp đồng</div><div style="font-size:14px;font-weight:600;color:#16241D;margin-top:3px">Chính thức</div></div>
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:10px;padding:13px 15px"><div style="font-size:12px;color:#5B6B63">Ngày vào · chính thức</div><div style="font-size:14px;font-weight:600;color:#16241D;margin-top:3px">02/03/2024 · 02/06/2024</div></div>
+          </div>
+          <div style="background:#fff;border:1px solid #E2E8E5;border-radius:10px;padding:16px">
+            <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:4px">Địa điểm làm việc <span style="font-size:11.5px;font-weight:500;color:#9aa8a1">· chọn nhiều, mỗi nơi gắn ca + nghỉ trưa</span></div>
+            <div style="display:flex;flex-direction:column;gap:10px;margin-top:12px">
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#F4F7F5;border-radius:10px"><span style="font-size:12px;font-weight:700;color:#2457A8;background:#E7EEFB;border-radius:7px;padding:5px 10px">Trụ sở Hà Nội</span><span style="font-size:13px;color:#16241D">Ca Hành chính · 08:00–17:00</span><span style="font-size:12.5px;color:#5B6B63;margin-left:auto">Nghỉ trưa 12:00–13:00</span></div>
+              <div style="display:flex;align-items:center;gap:12px;padding:12px;background:#F4F7F5;border-radius:10px"><span style="font-size:12px;font-weight:700;color:#2457A8;background:#E7EEFB;border-radius:7px;padding:5px 10px">HCM · CN1</span><span style="font-size:13px;color:#16241D">Ca chiều · 13:00–21:00</span><span style="font-size:12.5px;color:#5B6B63;margin-left:auto">Nghỉ 17:30–18:00</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S6 Create/Edit form -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S6</span> Tạo / chỉnh sửa hồ sơ <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:520px;height:620px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 26px;border-bottom:1px solid #E2E8E5"><div style="font-size:17px;font-weight:800;color:#16345E">Thêm nhân viên mới</div><div style="font-size:12.5px;color:#5B6B63;margin-top:2px">Bước 1/3 · Thông tin cơ bản</div></div>
+        <div style="display:flex;gap:6px;padding:14px 26px 0"><div style="flex:1;height:4px;border-radius:2px;background:#2C68C9"></div><div style="flex:1;height:4px;border-radius:2px;background:#E2E8E5"></div><div style="flex:1;height:4px;border-radius:2px;background:#E2E8E5"></div></div>
+        <div style="flex:1;overflow:hidden;padding:22px 26px">
+          <div style="display:flex;align-items:center;gap:14px;margin-bottom:20px"><div style="width:64px;height:64px;border-radius:16px;background:#F4F7F5;border:2px dashed #cdd6d1;display:flex;align-items:center;justify-content:center;color:#9aa8a1;font-size:22px">＋</div><div><div style="font-size:13.5px;font-weight:600;color:#16241D">Ảnh đại diện</div><div style="font-size:12px;color:#9aa8a1">PNG/JPG · tối đa 2MB</div></div></div>
+          <div style="margin-bottom:14px"><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Họ và tên <span style="color:#D32F2F">*</span></div><div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px">Nguyễn Văn An</div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px"><div><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Email công ty <span style="color:#D32F2F">*</span></div><div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px">an.nguyen@5sao.vn</div></div><div><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Số điện thoại <span style="color:#D32F2F">*</span></div><div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px">0903 555 428</div></div></div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px"><div><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Giới tính</div><div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px;display:flex;justify-content:space-between">Nam <span style="color:#9aa8a1">▾</span></div></div><div><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Ngày sinh</div><div style="font-size:14px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px;display:flex;justify-content:space-between">12/08/1996 <span style="color:#9aa8a1">▦</span></div></div></div>
+          <div><div style="font-size:13px;font-weight:500;color:#5B6B63;margin-bottom:6px">Địa chỉ</div><div style="font-size:14px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:11px 14px">Số nhà, đường, phường/xã…</div></div>
+        </div>
+        <div style="padding:16px 26px;border-top:1px solid #E2E8E5;display:flex;justify-content:space-between"><button style="font-family:inherit;font-size:13.5px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 18px">Hủy</button><button style="font-family:inherit;font-size:13.5px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:10px 22px">Tiếp tục →</button></div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+
+    <!-- S7 File hồ sơ -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S7</span> Quản lý file hồ sơ <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:430px;height:500px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 22px;border-bottom:1px solid #E2E8E5;font-size:15px;font-weight:800;color:#16345E">File hồ sơ — Nguyễn Văn An</div>
+        <div style="flex:1;overflow:hidden;padding:18px 22px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:13px;padding:13px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:40px;height:40px;border-radius:9px;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:18px">📄</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">CCCD</div><div style="font-size:12px;color:#5B6B63">cccd_an.pdf · 1.2MB</div></div><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đã có</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:40px;height:40px;border-radius:9px;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:18px">📄</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Hợp đồng lao động</div><div style="font-size:12px;color:#5B6B63">hdld_2024.pdf · 0.8MB</div></div><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đã có</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:40px;height:40px;border-radius:9px;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:18px">📄</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">CV</div><div style="font-size:12px;color:#5B6B63">cv_an.pdf · 0.5MB</div></div><span style="font-size:11.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 10px">Đã có</span></div>
+            <div style="display:flex;align-items:center;gap:13px;padding:13px;border:1px dashed #cdd6d1;border-radius:11px;background:#F8FAF9"><div style="width:40px;height:40px;border-radius:9px;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:18px">⬆</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Cam kết</div><div style="font-size:12px;color:#a9791a">Chưa tải lên</div></div><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:7px 13px">Tải lên</button></div>
+          </div>
+          <div style="margin-top:18px;border:2px dashed #cdd6d1;border-radius:12px;padding:24px;text-align:center;background:#F8FAF9"><div style="font-size:24px;color:#9aa8a1">⬆</div><div style="font-size:13px;color:#5B6B63;margin-top:6px">Kéo thả file vào đây hoặc <span style="color:#2C68C9;font-weight:600">chọn file</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S8 Activity history -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S8</span> Lịch sử hoạt động <span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border:1px solid #f6e6bd;border-radius:5px;padding:2px 7px">P2 · chỉ xem</span></div>
+      <div style="width:430px;height:500px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 22px;border-bottom:1px solid #E2E8E5;font-size:15px;font-weight:800;color:#16345E">Lịch sử cập nhật hồ sơ</div>
+        <div style="flex:1;overflow:hidden;padding:20px 22px">
+          <div style="position:relative;padding-left:24px">
+            <div style="position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:#E2E8E5"></div>
+            <div style="position:relative;margin-bottom:20px"><div style="position:absolute;left:-24px;top:2px;width:16px;height:16px;border-radius:50%;background:#2C68C9;border:3px solid #fff;box-shadow:0 0 0 1px #2C68C9"></div><div style="font-size:13.5px;font-weight:600;color:#16241D">Cập nhật địa điểm làm việc</div><div style="font-size:12.5px;color:#5B6B63">Thêm "HCM · CN1" · bởi Phạm Hà</div><div style="font-size:11.5px;color:#9aa8a1;margin-top:2px">24/06/2026 · 14:02</div></div>
+            <div style="position:relative;margin-bottom:20px"><div style="position:absolute;left:-24px;top:2px;width:16px;height:16px;border-radius:50%;background:#cdd6d1;border:3px solid #fff"></div><div style="font-size:13.5px;font-weight:600;color:#16241D">Đổi loại hợp đồng</div><div style="font-size:12.5px;color:#5B6B63">Thử việc → Chính thức · bởi Phạm Hà</div><div style="font-size:11.5px;color:#9aa8a1;margin-top:2px">02/06/2026 · 09:15</div></div>
+            <div style="position:relative;margin-bottom:20px"><div style="position:absolute;left:-24px;top:2px;width:16px;height:16px;border-radius:50%;background:#cdd6d1;border:3px solid #fff"></div><div style="font-size:13.5px;font-weight:600;color:#16241D">Tải lên file CV</div><div style="font-size:12.5px;color:#5B6B63">cv_an.pdf · bởi Nguyễn An</div><div style="font-size:11.5px;color:#9aa8a1;margin-top:2px">15/03/2026 · 16:40</div></div>
+            <div style="position:relative"><div style="position:absolute;left:-24px;top:2px;width:16px;height:16px;border-radius:50%;background:#cdd6d1;border:3px solid #fff"></div><div style="font-size:13.5px;font-weight:600;color:#16241D">Tạo hồ sơ</div><div style="font-size:12.5px;color:#5B6B63">Khởi tạo bởi Phạm Hà</div><div style="font-size:11.5px;color:#9aa8a1;margin-top:2px">02/03/2024 · 08:00</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S9 Config categories -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S9</span> Cấu hình danh mục <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:520px;height:500px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;font-size:15px;font-weight:800;color:#16345E">Cấu hình hệ thống</div>
+        <div style="display:flex;gap:4px;padding:14px 24px 0;border-bottom:1px solid #E2E8E5"><div style="font-size:13px;color:#5B6B63;padding:9px 12px">Phòng ban</div><div style="font-size:13px;color:#5B6B63;padding:9px 12px">Vị trí</div><div style="font-size:13px;font-weight:700;color:#2C68C9;padding:9px 12px;border-bottom:2px solid #2C68C9">Ca làm việc</div><div style="font-size:13px;color:#5B6B63;padding:9px 12px">Địa điểm</div></div>
+        <div style="flex:1;overflow:hidden;padding:18px 24px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px"><span style="font-size:13px;color:#5B6B63">4 ca làm việc</span><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:7px 13px">+ Thêm ca</button></div>
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:8px;height:8px;border-radius:50%;background:#2C68C9"></div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Hành chính</div><div style="font-size:12px;color:#5B6B63">08:00–17:00 · nghỉ trưa 12:00–13:00</div></div><span style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63;background:#F4F7F5;border-radius:6px;padding:3px 8px">×1.0</span><span style="color:#cdd6d1">⋯</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:8px;height:8px;border-radius:50%;background:#F9A825"></div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Tăng ca 120</div><div style="font-size:12px;color:#5B6B63">Theo giờ thực tế</div></div><span style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63;background:#F4F7F5;border-radius:6px;padding:3px 8px">×1.2</span><span style="color:#cdd6d1">⋯</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:8px;height:8px;border-radius:50%;background:#D32F2F"></div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Tăng ca 150</div><div style="font-size:12px;color:#5B6B63">Theo giờ thực tế</div></div><span style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63;background:#F4F7F5;border-radius:6px;padding:3px 8px">×1.5</span><span style="color:#cdd6d1">⋯</span></div>
+            <div style="display:flex;align-items:center;gap:12px;padding:13px 15px;border:1px solid #E2E8E5;border-radius:11px"><div style="width:8px;height:8px;border-radius:50%;background:#2C68C9"></div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Online</div><div style="font-size:12px;color:#5B6B63">Quy tắc HC × 1/2</div></div><span style="font-family:'Roboto Mono',monospace;font-size:12px;color:#5B6B63;background:#F4F7F5;border-radius:6px;padding:3px 8px">×0.5</span><span style="color:#cdd6d1">⋯</span></div>
+          </div>
+          <div style="margin-top:16px;background:#FEF4DC;border:1px solid #f6e6bd;border-radius:10px;padding:12px 14px;font-size:12.5px;color:#a9791a">⚙ Hệ số ngày công &amp; ngưỡng 1h/5h, mức 3h đi trễ/về sớm đều là tham số cấu hình được.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE C — CHẤM CÔNG ============ -->
+  <div id="mod-att" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">03</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Chấm công</h2>
+    <span style="font-size:13.5px;color:#5B6B63">S10 Check-in/out · S11 Lịch sử · S12 Bổ sung công · S13 Bảng toàn công ty · S14 Thống kê</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <!-- S10 states banner -->
+  <div style="max-width:1280px;margin:0 auto 14px;font-size:13px;color:#5B6B63"><span style="font-weight:700;color:#16345E">S10 · Màn chấm công</span> — màn hình quan trọng nhất, thiết kế đủ các trạng thái:</div>
+
+  <div style="display:flex;gap:32px;align-items:flex-start;margin-bottom:44px">
+
+    <!-- S10a default check-in -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">① Sẵn sàng Check-in</div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:16px;font-weight:800;color:#16345E">Chấm công</div></div>
+        <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column">
+          <!-- map -->
+          <div style="height:120px;border-radius:14px;background:linear-gradient(135deg,#dce8e2,#cfe0d7);position:relative;overflow:hidden;margin-bottom:14px">
+            <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:22px 22px"></div>
+            <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);text-align:center"><div style="width:18px;height:18px;border-radius:50%;background:#2C68C9;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25);margin:0 auto"></div></div>
+            <div style="position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:600;color:#16345E;background:rgba(255,255,255,.9);border-radius:7px;padding:4px 9px">📍 Trụ sở Hà Nội</div>
+          </div>
+          <div style="background:#fff;border-radius:13px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:11.5px;color:#5B6B63">Ca hôm nay · vào dự kiến 08:00</div><div style="font-size:13.5px;font-weight:700;color:#16345E">Hành chính</div></div><span style="font-size:11px;font-weight:600;color:#2457A8;background:#E7EEFB;border-radius:999px;padding:4px 10px">GPS hợp lệ</span></div>
+          <div style="text-align:center;margin:6px 0 14px"><div style="font-family:'Roboto Mono',monospace;font-size:30px;font-weight:500;color:#16345E">08:02:15</div><div style="font-size:11.5px;color:#5B6B63">Thứ Hai · 23/06/2026</div></div>
+          <!-- work type selector -->
+          <div style="display:flex;gap:6px;margin-bottom:16px"><span style="flex:1;text-align:center;font-size:11.5px;font-weight:600;color:#fff;background:#2C68C9;border-radius:8px;padding:8px 0">HC</span><span style="flex:1;text-align:center;font-size:11.5px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:8px;padding:8px 0">TC120</span><span style="flex:1;text-align:center;font-size:11.5px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:8px;padding:8px 0">TC150</span><span style="flex:1;text-align:center;font-size:11.5px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:8px;padding:8px 0">ON</span></div>
+          <div style="margin-top:auto;text-align:center"><div style="width:150px;height:150px;border-radius:50%;background:#2C68C9;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 28px rgba(44,104,201,.4)"><div style="font-size:30px">●</div><div style="font-size:17px;font-weight:800;margin-top:2px">Check-in</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S10b success locked -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">② Đã check-in · xác nhận &amp; khoá</div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:16px;font-weight:800;color:#16345E">Chấm công</div></div>
+        <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column">
+          <div style="background:#E6F2E7;border:1px solid #cfe6d1;border-radius:14px;padding:18px;text-align:center;margin-bottom:14px"><div style="width:48px;height:48px;border-radius:50%;background:#2E7D32;margin:0 auto 8px;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:15px;font-weight:800;color:#2E7D32">Đã check-in lúc 08:02</div><div style="font-size:12.5px;color:#3a7a3e;margin-top:2px">Trạng thái: <strong>Hợp lệ</strong> · Hành chính</div></div>
+          <div style="background:#fff;border-radius:13px;padding:14px;margin-bottom:10px">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#5B6B63">🕐 Thời gian</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D;display:flex;align-items:center;gap:6px">08:02:15 <span style="font-size:11px;color:#9aa8a1">🔒</span></span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span style="font-size:12.5px;color:#5B6B63">📍 Định vị</span><span style="font-size:13px;color:#16241D;display:flex;align-items:center;gap:6px">Trụ sở Hà Nội <span style="font-size:11px;color:#9aa8a1">🔒</span></span></div>
+          </div>
+          <div style="font-size:11.5px;color:#9aa8a1;text-align:center;margin-bottom:12px">Thời gian &amp; định vị đã khoá, không thể chỉnh sửa.</div>
+          <div style="margin-top:auto"><button style="width:100%;font-family:inherit;font-size:16px;font-weight:700;color:#fff;background:#16345E;border:none;border-radius:14px;padding:16px">● Check-out</button><div style="text-align:center;font-size:11.5px;color:#5B6B63;margin-top:8px">Ra dự kiến 17:00 · còn 8h 58m</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S10c GPS error -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">③ Lỗi GPS / ngoài vùng</div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:16px;font-weight:800;color:#16345E">Chấm công</div></div>
+        <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column">
+          <div style="height:120px;border-radius:14px;background:#FBE7E7;position:relative;overflow:hidden;margin-bottom:14px;display:flex;align-items:center;justify-content:center"><div style="text-align:center;color:#b3261e"><div style="font-size:26px">⚠</div><div style="font-size:12px;font-weight:600;margin-top:4px">Không lấy được vị trí</div></div></div>
+          <div style="background:#FBE7E7;border:1px solid #f3cccc;border-radius:13px;padding:14px;margin-bottom:14px"><div style="font-size:13.5px;font-weight:700;color:#b3261e;margin-bottom:6px">GPS đang tắt hoặc ngoài vùng cho phép</div><div style="font-size:12.5px;color:#a23a33;line-height:1.5">Không thể chấm công khi chưa xác định được vị trí. Vui lòng:</div><div style="font-size:12.5px;color:#a23a33;margin-top:8px;line-height:1.7">• Bật Định vị (GPS) cho ứng dụng<br>• Đứng trong phạm vi địa điểm làm việc<br>• Thử lại sau vài giây</div></div>
+          <button style="font-family:inherit;font-size:14px;font-weight:600;color:#16345E;background:#fff;border:1px solid #cdd6d1;border-radius:11px;padding:12px;margin-bottom:10px">↻ Thử lấy lại vị trí</button>
+          <div style="margin-top:auto;text-align:center"><div style="width:150px;height:150px;border-radius:50%;background:#F0F3F1;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#9aa8a1;border:2px dashed #cdd6d1"><div style="font-size:24px">🔒</div><div style="font-size:15px;font-weight:700;margin-top:4px">Tạm khoá</div></div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S10d forgot check-out warning -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">④ Cảnh báo quên Check-out</div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:16px;font-weight:800;color:#16345E">Chấm công</div></div>
+        <div style="flex:1;overflow:hidden;padding:16px;display:flex;flex-direction:column">
+          <div style="background:#FEF4DC;border:1px solid #f6e6bd;border-radius:14px;padding:16px;margin-bottom:14px"><div style="display:flex;align-items:center;gap:10px;margin-bottom:8px"><span style="font-size:20px">⚠</span><span style="font-size:14px;font-weight:800;color:#a9791a">Bạn quên check-out hôm qua</span></div><div style="font-size:12.5px;color:#8a6516;line-height:1.5">Ngày <strong>17/06</strong> có giờ vào 08:00 nhưng <strong>chưa có giờ ra</strong>. Công ngày này chưa được tính.</div></div>
+          <div style="background:#fff;border-radius:13px;padding:14px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#5B6B63">Giờ vào (I)</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">08:00</span></div><div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#5B6B63">Giờ ra (O)</span><span style="font-size:13px;font-weight:700;color:#D32F2F">Thiếu</span></div></div>
+          <button style="font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:11px;padding:13px;margin-bottom:10px">Gửi yêu cầu bổ sung công</button>
+          <button style="font-family:inherit;font-size:13.5px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #cdd6d1;border-radius:11px;padding:12px">Để sau</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S11 history desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S11</span> Lịch sử chấm công cá nhân <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop · chỉ xem</span></div>
+      <div style="width:680px;height:520px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:800;color:#16345E">Lịch sử chấm công · Tháng 6/2026</div><div style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:7px 13px">Tháng 6 ▾</div></div>
+        <div style="flex:1;overflow:hidden;padding:0">
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:12px 24px;background:#F4F7F5;border-bottom:1px solid #E2E8E5;font-size:11.5px;font-weight:700;color:#5B6B63;text-transform:uppercase"><span>Ngày</span><span>Vào (I)</span><span>Ra (O)</span><span>Loại</span><span>Trạng thái</span><span>Công</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T2 · 23/06</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">08:02</span><span style="font-family:'Roboto Mono',monospace;color:#9aa8a1">—</span><span style="color:#16241D">HC</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Hợp lệ</span></span><span style="font-family:'Roboto Mono',monospace;color:#16241D">—</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T6 · 20/06</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">08:01</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">17:05</span><span style="color:#16241D">HC</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Hợp lệ</span></span><span style="font-family:'Roboto Mono',monospace;color:#16241D">8/8</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T5 · 19/06</span><span style="font-family:'Roboto Mono',monospace;color:#a9791a">08:34</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">17:02</span><span style="color:#16241D">HC</span><span><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:3px 9px">Trễ 34′</span></span><span style="font-family:'Roboto Mono',monospace;color:#16241D">8/8</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T4 · 18/06</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">07:58</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">21:30</span><span style="color:#2457A8;font-weight:600">TC150</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Hợp lệ</span></span><span style="font-family:'Roboto Mono',monospace;color:#16241D">+6.7h</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T3 · 17/06</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">08:00</span><span style="font-family:'Roboto Mono',monospace;color:#D32F2F">Thiếu</span><span style="color:#16241D">HC</span><span><span style="font-size:11px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:3px 9px">Quên ra</span></span><span style="font-family:'Roboto Mono',monospace;color:#D32F2F">?</span></div>
+          <div style="display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr 1.1fr 0.9fr;gap:10px;padding:13px 24px;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">T2 · 16/06</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">09:00</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">14:00</span><span style="color:#2457A8;font-weight:600">ON</span><span><span style="font-size:11px;font-weight:600;color:#2457A8;background:#E7EEFB;border-radius:999px;padding:3px 9px">Online</span></span><span style="font-family:'Roboto Mono',monospace;color:#16241D">4/8</span></div>
+        </div>
+        <div style="padding:14px 24px;border-top:1px solid #E2E8E5;display:flex;gap:18px;font-size:12.5px;color:#5B6B63"><span>🔒 Lịch sử bất biến, chỉ xem</span><span style="margin-left:auto">Tổng công tháng: <strong style="color:#16345E">18.5 ngày</strong></span></div>
+      </div>
+    </div>
+
+    <!-- S11 history mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S11</span> Lịch sử <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:520px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:16px;font-weight:800;color:#16345E">Lịch sử công</div><span style="font-size:12px;color:#16241D;background:#F4F7F5;border-radius:7px;padding:5px 10px">Th6 ▾</span></div></div>
+        <div style="flex:1;overflow:hidden;padding:14px">
+          <div style="display:flex;flex-direction:column;gap:9px">
+            <div style="background:#fff;border-radius:12px;padding:13px;display:flex;align-items:center;gap:12px"><div style="text-align:center"><div style="font-size:11px;color:#5B6B63">T6</div><div style="font-size:15px;font-weight:800;color:#16345E">20</div></div><div style="flex:1"><div style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">08:01 → 17:05</div><div style="font-size:11.5px;color:#5B6B63">Hành chính</div></div><div style="text-align:right"><span style="font-size:10.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 8px">Hợp lệ</span><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#16241D;margin-top:4px">8/8</div></div></div>
+            <div style="background:#fff;border-radius:12px;padding:13px;display:flex;align-items:center;gap:12px"><div style="text-align:center"><div style="font-size:11px;color:#5B6B63">T5</div><div style="font-size:15px;font-weight:800;color:#16345E">19</div></div><div style="flex:1"><div style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">08:34 → 17:02</div><div style="font-size:11.5px;color:#5B6B63">Hành chính</div></div><div style="text-align:right"><span style="font-size:10.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:3px 8px">Trễ 34′</span><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#16241D;margin-top:4px">8/8</div></div></div>
+            <div style="background:#fff;border-radius:12px;padding:13px;display:flex;align-items:center;gap:12px"><div style="text-align:center"><div style="font-size:11px;color:#5B6B63">T4</div><div style="font-size:15px;font-weight:800;color:#16345E">18</div></div><div style="flex:1"><div style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">07:58 → 21:30</div><div style="font-size:11.5px;color:#2457A8;font-weight:600">Tăng ca 150</div></div><div style="text-align:right"><span style="font-size:10.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 8px">Hợp lệ</span><div style="font-family:'Roboto Mono',monospace;font-size:12px;color:#16241D;margin-top:4px">+6.7h</div></div></div>
+            <div style="background:#fff;border-radius:12px;padding:13px;display:flex;align-items:center;gap:12px;border:1px solid #f3cccc"><div style="text-align:center"><div style="font-size:11px;color:#5B6B63">T3</div><div style="font-size:15px;font-weight:800;color:#16345E">17</div></div><div style="flex:1"><div style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">08:00 → <span style="color:#D32F2F">Thiếu</span></div><div style="font-size:11.5px;color:#5B6B63">Hành chính</div></div><div style="text-align:right"><span style="font-size:10.5px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:3px 8px">Quên ra</span></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+
+    <!-- S12 supplement request mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S12</span> Yêu cầu bổ sung công <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:580px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;align-items:center;gap:10px"><span style="color:#5B6B63">‹</span><div style="font-size:16px;font-weight:800;color:#16345E">Bổ sung công</div></div></div>
+        <div style="flex:1;overflow:hidden;padding:16px">
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:8px">Tình huống</div>
+          <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:16px">
+            <div style="display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border:1px solid #E2E8E5;border-radius:11px"><span style="width:18px;height:18px;border-radius:50%;border:5px solid #cdd6d1"></span><span style="font-size:13.5px;color:#16241D">Quên check-in</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px;background:#E7EEFB;border:1px solid #2C68C9;border-radius:11px"><span style="width:18px;height:18px;border-radius:50%;border:5px solid #2C68C9"></span><span style="font-size:13.5px;font-weight:600;color:#16345E">Quên check-out</span></div>
+            <div style="display:flex;align-items:center;gap:10px;padding:12px;background:#fff;border:1px solid #E2E8E5;border-radius:11px"><span style="width:18px;height:18px;border-radius:50%;border:5px solid #cdd6d1"></span><span style="font-size:13.5px;color:#16241D">Chấm sai công</span></div>
+          </div>
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:6px">Ngày · giờ đề xuất</div>
+          <div style="display:flex;gap:8px;margin-bottom:14px"><div style="flex:1.4;font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px">17/06/2026</div><div style="flex:1;font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px;font-family:'Roboto Mono',monospace">17:05</div></div>
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:6px">Lý do <span style="color:#D32F2F">*</span></div>
+          <div style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px;height:64px">Máy hết pin nên không kịp check-out…</div>
+        </div>
+        <div style="padding:14px 16px;border-top:1px solid #eef2f0;background:#fff"><button style="width:100%;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:12px;padding:14px">Gửi yêu cầu duyệt</button><div style="text-align:center;font-size:11px;color:#9aa8a1;margin-top:7px">Luồng: Nhân viên → Quản lý → Quản trị</div></div>
+      </div>
+    </div>
+
+    <!-- S13 company attendance board desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S13</span> Bảng chấm công toàn công ty <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop · Quản trị</span></div>
+      <div style="width:760px;height:580px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:800;color:#16345E">Chấm công toàn công ty</div><div style="display:flex;gap:8px"><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:7px 12px">23/06 ▾</span><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:7px 12px">Phòng ban ▾</span><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:7px 12px">Địa điểm ▾</span></div></div>
+        <!-- summary chips -->
+        <div style="display:flex;gap:10px;padding:16px 24px"><div style="flex:1;background:#E6F2E7;border-radius:10px;padding:11px 14px"><div style="font-size:11.5px;color:#3a7a3e">Đúng giờ</div><div style="font-size:20px;font-weight:800;color:#2E7D32">219</div></div><div style="flex:1;background:#FEF4DC;border-radius:10px;padding:11px 14px"><div style="font-size:11.5px;color:#a9791a">Đi trễ</div><div style="font-size:20px;font-weight:800;color:#a9791a">12</div></div><div style="flex:1;background:#FBE7E7;border-radius:10px;padding:11px 14px"><div style="font-size:11.5px;color:#b3261e">Quên chấm</div><div style="font-size:20px;font-weight:800;color:#D32F2F">5</div></div><div style="flex:1;background:#E7EEFB;border-radius:10px;padding:11px 14px"><div style="font-size:11.5px;color:#2457A8">Tăng ca</div><div style="font-size:20px;font-weight:800;color:#2457A8">8</div></div></div>
+        <div style="flex:1;overflow:hidden;padding:0 0 0">
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:11px 24px;background:#F4F7F5;border-top:1px solid #E2E8E5;border-bottom:1px solid #E2E8E5;font-size:11.5px;font-weight:700;color:#5B6B63;text-transform:uppercase"><span>Nhân viên</span><span>Vào</span><span>Ra</span><span>Loại</span><span>Trạng thái</span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:12px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">NA</div><span style="color:#16241D">Nguyễn An</span></div><span style="font-family:'Roboto Mono',monospace">08:02</span><span style="font-family:'Roboto Mono',monospace;color:#9aa8a1">—</span><span>HC</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Hợp lệ</span></span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:12px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:50%;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">LP</div><span style="color:#16241D">Lê Phương</span></div><span style="font-family:'Roboto Mono',monospace;color:#a9791a">08:41</span><span style="font-family:'Roboto Mono',monospace;color:#9aa8a1">—</span><span>HC</span><span><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:3px 9px">Trễ 41′</span></span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:12px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">TL</div><span style="color:#16241D">Trần Lâm</span></div><span style="font-family:'Roboto Mono',monospace">07:55</span><span style="font-family:'Roboto Mono',monospace;color:#9aa8a1">—</span><span style="color:#2457A8;font-weight:600">ON</span><span><span style="font-size:11px;font-weight:600;color:#2457A8;background:#E7EEFB;border-radius:999px;padding:3px 9px">Online</span></span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:12px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:50%;background:#FBE7E7;color:#b3261e;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">NH</div><span style="color:#16241D">Ngô Huy</span></div><span style="font-family:'Roboto Mono',monospace">08:00</span><span style="font-family:'Roboto Mono',monospace;color:#D32F2F">Thiếu</span><span>HC</span><span><span style="font-size:11px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:3px 9px">Quên ra</span></span></div>
+          <div style="display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr 1.1fr;gap:10px;padding:12px 24px;align-items:center;font-size:13px"><div style="display:flex;align-items:center;gap:9px"><div style="width:30px;height:30px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">ĐM</div><span style="color:#16241D">Đặng Minh</span></div><span style="font-family:'Roboto Mono',monospace">07:50</span><span style="font-family:'Roboto Mono',monospace;color:#9aa8a1">—</span><span style="color:#2457A8;font-weight:600">TC120</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Hợp lệ</span></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+    <!-- S14 statistics desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S14</span> Thống kê công theo loại HC/TC/ON, trễ/sớm <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:820px;height:520px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 26px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:800;color:#16345E">Thống kê công · Tháng 6/2026</div><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:7px 12px">Marketing ▾</span></div>
+        <div style="flex:1;overflow:hidden;padding:22px 26px">
+          <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:22px">
+            <div style="background:#F4F7F5;border-radius:11px;padding:14px"><div style="font-size:12px;color:#5B6B63">Công HC</div><div style="font-size:24px;font-weight:900;color:#16345E">412</div><div style="font-size:11px;color:#5B6B63">ngày công</div></div>
+            <div style="background:#F4F7F5;border-radius:11px;padding:14px"><div style="font-size:12px;color:#5B6B63">Tăng ca (TC)</div><div style="font-size:24px;font-weight:900;color:#a9791a">86.4</div><div style="font-size:11px;color:#5B6B63">giờ quy đổi</div></div>
+            <div style="background:#F4F7F5;border-radius:11px;padding:14px"><div style="font-size:12px;color:#5B6B63">Online (ON)</div><div style="font-size:24px;font-weight:900;color:#2457A8">24</div><div style="font-size:11px;color:#5B6B63">ngày công</div></div>
+            <div style="background:#F4F7F5;border-radius:11px;padding:14px"><div style="font-size:12px;color:#5B6B63">Trễ / Sớm</div><div style="font-size:24px;font-weight:900;color:#D32F2F">31</div><div style="font-size:11px;color:#5B6B63">lượt</div></div>
+          </div>
+          <div style="display:grid;grid-template-columns:1.5fr 1fr;gap:22px">
+            <!-- bar chart -->
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:16px">Cơ cấu công theo loại (theo tuần)</div>
+              <div style="display:flex;align-items:flex-end;gap:18px;height:180px;padding-bottom:24px;border-bottom:1px solid #E2E8E5">
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end"><div style="width:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="background:#2C68C9;height:96px;border-radius:5px 5px 0 0"></div><div style="background:#F9A825;height:22px"></div><div style="background:#9DB9EC;height:10px;border-radius:0 0 5px 5px"></div></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end"><div style="width:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="background:#2C68C9;height:108px;border-radius:5px 5px 0 0"></div><div style="background:#F9A825;height:30px"></div><div style="background:#9DB9EC;height:8px;border-radius:0 0 5px 5px"></div></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end"><div style="width:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="background:#2C68C9;height:120px;border-radius:5px 5px 0 0"></div><div style="background:#F9A825;height:18px"></div><div style="background:#9DB9EC;height:14px;border-radius:0 0 5px 5px"></div></div></div>
+                <div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:3px;height:100%;justify-content:flex-end"><div style="width:100%;display:flex;flex-direction:column;justify-content:flex-end"><div style="background:#2C68C9;height:88px;border-radius:5px 5px 0 0"></div><div style="background:#F9A825;height:16px"></div><div style="background:#9DB9EC;height:12px;border-radius:0 0 5px 5px"></div></div></div>
+              </div>
+              <div style="display:flex;gap:18px;margin-top:8px"><span style="flex:1;text-align:center;font-size:11px;color:#5B6B63">T1</span><span style="flex:1;text-align:center;font-size:11px;color:#5B6B63">T2</span><span style="flex:1;text-align:center;font-size:11px;color:#5B6B63">T3</span><span style="flex:1;text-align:center;font-size:11px;color:#5B6B63">T4</span></div>
+              <div style="display:flex;gap:14px;margin-top:12px"><span style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:#5B6B63"><span style="width:10px;height:10px;border-radius:3px;background:#2C68C9"></span>HC</span><span style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:#5B6B63"><span style="width:10px;height:10px;border-radius:3px;background:#F9A825"></span>TC</span><span style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:#5B6B63"><span style="width:10px;height:10px;border-radius:3px;background:#9DB9EC"></span>ON</span></div>
+            </div>
+            <!-- donut -->
+            <div>
+              <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:16px">Tỉ trọng loại công</div>
+              <div style="display:flex;align-items:center;gap:18px">
+                <div style="width:120px;height:120px;border-radius:50%;background:conic-gradient(#2C68C9 0 72%,#F9A825 72% 90%,#9DB9EC 90% 100%);display:flex;align-items:center;justify-content:center"><div style="width:72px;height:72px;border-radius:50%;background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center"><div style="font-size:18px;font-weight:900;color:#16345E">522</div><div style="font-size:10px;color:#5B6B63">tổng</div></div></div>
+                <div style="display:flex;flex-direction:column;gap:10px"><div><div style="font-size:12px;color:#5B6B63;display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:3px;background:#2C68C9"></span>HC</div><div style="font-size:15px;font-weight:800;color:#16345E">72%</div></div><div><div style="font-size:12px;color:#5B6B63;display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:3px;background:#F9A825"></span>TC</div><div style="font-size:15px;font-weight:800;color:#16345E">18%</div></div><div><div style="font-size:12px;color:#5B6B63;display:flex;align-items:center;gap:6px"><span style="width:9px;height:9px;border-radius:3px;background:#9DB9EC"></span>ON</div><div style="font-size:15px;font-weight:800;color:#16345E">10%</div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE D — NGHỈ PHÉP ============ -->
+  <div id="mod-leave" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">04</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Nghỉ phép</h2>
+    <span style="font-size:13.5px;color:#5B6B63">S15 Đăng ký · S16 Đơn của tôi · S17 Hàng chờ duyệt · S18 Chi tiết &amp; duyệt</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- S15 register leave mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S15</span> Đăng ký nghỉ phép <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile · trường động</span></div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;align-items:center;gap:10px"><span style="color:#5B6B63">‹</span><div style="font-size:16px;font-weight:800;color:#16345E">Xin nghỉ phép</div></div></div>
+        <div style="flex:1;overflow:hidden;padding:16px">
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:8px">Loại nghỉ</div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px">
+            <span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Không lương</span>
+            <span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Nửa ngày</span>
+            <span style="font-size:12px;font-weight:600;color:#fff;background:#2C68C9;border-radius:999px;padding:7px 12px">Nghỉ bệnh</span>
+            <span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Đi trễ</span>
+            <span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Về sớm</span>
+            <span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Online</span>
+          </div>
+          <div style="display:flex;gap:8px;margin-bottom:14px"><div style="flex:1"><div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Từ ngày</div><div style="font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px">24/06</div></div><div style="flex:1"><div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Đến ngày</div><div style="font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px">25/06</div></div></div>
+          <!-- dynamic field for nghỉ bệnh -->
+          <div style="background:#E7EEFB;border:1px dashed #2C68C9;border-radius:11px;padding:13px;margin-bottom:14px"><div style="font-size:12.5px;font-weight:700;color:#16345E;margin-bottom:8px">📎 Giấy bệnh viện <span style="color:#D32F2F">* bắt buộc</span></div><div style="display:flex;align-items:center;gap:10px"><div style="width:48px;height:48px;border-radius:9px;background:#fff;border:1px solid #cfe6d1;display:flex;align-items:center;justify-content:center;font-size:18px">🖼</div><div style="font-size:12px;color:#2457A8">giay_benh.jpg · đã đính kèm</div></div></div>
+          <div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Lý do <span style="color:#D32F2F">*</span></div>
+          <div style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px;height:50px">Sốt cao, có chỉ định nghỉ của bác sĩ…</div>
+        </div>
+        <div style="padding:14px 16px;border-top:1px solid #eef2f0;background:#fff"><button style="width:100%;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:12px;padding:14px">Gửi đơn</button></div>
+      </div>
+    </div>
+
+    <!-- S15 alt: đi trễ field (≤3h rule) -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S15</span> Đi trễ — nhập giờ, chặn &gt;3h <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;align-items:center;gap:10px"><span style="color:#5B6B63">‹</span><div style="font-size:16px;font-weight:800;color:#16345E">Xin nghỉ phép</div></div></div>
+        <div style="flex:1;overflow:hidden;padding:16px">
+          <div style="font-size:12.5px;font-weight:500;color:#5B6B63;margin-bottom:8px">Loại nghỉ</div>
+          <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:16px"><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Không lương</span><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Nửa ngày</span><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Nghỉ bệnh</span><span style="font-size:12px;font-weight:600;color:#fff;background:#2C68C9;border-radius:999px;padding:7px 12px">Đi trễ</span><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:7px 12px">Về sớm</span></div>
+          <div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Ngày áp dụng</div>
+          <div style="font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px;margin-bottom:14px">24/06/2026</div>
+          <div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Số giờ đi trễ</div>
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:6px"><div style="flex:1;font-family:'Roboto Mono',monospace;font-size:18px;font-weight:600;color:#16345E;background:#fff;border:1px solid #2C68C9;border-radius:10px;padding:12px 14px;text-align:center">1.5 h</div><div style="display:flex;flex-direction:column;gap:4px"><span style="font-size:14px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;text-align:center;line-height:24px">+</span><span style="font-size:14px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:7px;width:32px;text-align:center;line-height:24px">−</span></div></div>
+          <div style="font-size:11.5px;color:#a9791a;background:#FEF4DC;border:1px solid #f6e6bd;border-radius:9px;padding:9px 11px;margin-bottom:14px">⚠ Tối đa 3h. Trừ thẳng vào ngày công: 8/8 − 1.5/8 = <strong>6.5/8</strong>.</div>
+          <div style="font-size:12px;color:#5B6B63;margin-bottom:5px">Lý do <span style="color:#D32F2F">*</span></div>
+          <div style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 12px;height:50px">Kẹt xe, sự cố cá nhân…</div>
+        </div>
+        <div style="padding:14px 16px;border-top:1px solid #eef2f0;background:#fff"><button style="width:100%;font-family:inherit;font-size:15px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:12px;padding:14px">Gửi đơn</button></div>
+      </div>
+    </div>
+
+    <!-- S16 my requests mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S16</span> Đơn của tôi <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:620px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:16px;font-weight:800;color:#16345E">Đơn của tôi</div></div>
+        <div style="display:flex;gap:6px;padding:12px 16px 0"><span style="font-size:12px;font-weight:600;color:#fff;background:#2C68C9;border-radius:999px;padding:6px 13px">Tất cả</span><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 13px">Chờ</span><span style="font-size:12px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 13px">Đã duyệt</span></div>
+        <div style="flex:1;overflow:hidden;padding:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="background:#fff;border-radius:13px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:13.5px;font-weight:700;color:#16345E">Bổ sung công · quên check-out</div><div style="font-size:12px;color:#5B6B63">17/06 · đề xuất giờ ra 17:05</div></div><span style="font-size:10.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 9px">Chờ QL</span></div><div style="display:flex;align-items:center;gap:6px"><span style="width:7px;height:7px;border-radius:50%;background:#cdd6d1"></span><span style="font-size:11px;color:#5B6B63">Đã gửi · chờ Quản lý duyệt</span></div></div>
+            <div style="background:#fff;border-radius:13px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:13.5px;font-weight:700;color:#16345E">Đi trễ 1.5h</div><div style="font-size:12px;color:#5B6B63">20/06 · giảm 1.5/8 công</div></div><span style="font-size:10.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 9px">Đã duyệt</span></div></div>
+            <div style="background:#fff;border-radius:13px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px"><div><div style="font-size:13.5px;font-weight:700;color:#16345E">Nghỉ nửa ngày</div><div style="font-size:12px;color:#5B6B63">12/06 · buổi chiều</div></div><span style="font-size:10.5px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:4px 9px">Từ chối</span></div><div style="font-size:11px;color:#b3261e;background:#FBE7E7;border-radius:8px;padding:7px 9px;margin-top:4px">Lý do từ chối: trùng lịch chốt số cuối tháng.</div></div>
+            <div style="background:#fff;border-radius:13px;padding:14px"><div style="display:flex;justify-content:space-between;align-items:flex-start"><div><div style="font-size:13.5px;font-weight:700;color:#16345E">Làm online</div><div style="font-size:12px;color:#5B6B63">05/06 · cả ngày</div></div><span style="font-size:10.5px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:4px 9px">Đã duyệt</span></div></div>
+          </div>
+        </div>
+        <div style="padding:12px 16px;background:#fff;border-top:1px solid #eef2f0"><button style="width:100%;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:12px;padding:13px">+ Tạo đơn mới</button></div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+
+    <!-- S17 approval queue desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S17</span> Hàng chờ duyệt <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop · Quản lý/Quản trị</span></div>
+      <div style="width:620px;height:560px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:800;color:#16345E">Hàng chờ duyệt</div><span style="font-size:11.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:5px 11px">8 đơn chờ</span></div>
+        <div style="display:flex;gap:6px;padding:14px 24px 0;border-bottom:1px solid #E2E8E5"><span style="font-size:13px;font-weight:700;color:#2C68C9;padding:9px 4px 12px;border-bottom:2px solid #2C68C9">Tất cả (8)</span><span style="font-size:13px;color:#5B6B63;padding:9px 14px 12px">Nghỉ phép (5)</span><span style="font-size:13px;color:#5B6B63;padding:9px 14px 12px">Bổ sung công (3)</span></div>
+        <div style="flex:1;overflow:hidden;padding:14px 24px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1px solid #E2E8E5;border-radius:12px"><div style="width:38px;height:38px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">TL</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Trần Lâm <span style="font-size:11.5px;font-weight:400;color:#5B6B63">· Nghỉ bệnh 2 ngày</span></div><div style="font-size:12px;color:#5B6B63">24/06 → 25/06 · có giấy bệnh viện</div></div><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Cấp 1 ✓ · chờ cuối</span><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">Xem</button></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1px solid #E2E8E5;border-radius:12px"><div style="width:38px;height:38px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">NH</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Ngô Huy <span style="font-size:11.5px;font-weight:400;color:#5B6B63">· Bổ sung công (quên out)</span></div><div style="font-size:12px;color:#5B6B63">16/06 · đề xuất giờ ra 17:30</div></div><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Cấp 1 ✓ · chờ cuối</span><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">Xem</button></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1px solid #E2E8E5;border-radius:12px"><div style="width:38px;height:38px;border-radius:50%;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">LP</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Lê Phương <span style="font-size:11.5px;font-weight:400;color:#5B6B63">· Đi trễ 1.5h</span></div><div style="font-size:12px;color:#5B6B63">23/06 · giảm 1.5/8 công</div></div><span style="font-size:11px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:4px 10px">Chờ cấp 1</span><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">Xem</button></div>
+            <div style="display:flex;align-items:center;gap:14px;padding:14px;border:1px solid #E2E8E5;border-radius:12px"><div style="width:38px;height:38px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">VD</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Vũ Đức <span style="font-size:11.5px;font-weight:400;color:#5B6B63">· Làm online</span></div><div style="font-size:12px;color:#5B6B63">26/06 · cả ngày</div></div><span style="font-size:11px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:4px 10px">Chờ cấp 1</span><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">Xem</button></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S18 detail + approve desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S18</span> Chi tiết đơn + Duyệt/Từ chối <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:480px;height:560px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;display:flex;align-items:center;gap:12px"><div style="width:42px;height:42px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700">TL</div><div style="flex:1"><div style="font-size:15px;font-weight:800;color:#16345E">Trần Lâm · Nghỉ bệnh</div><div style="font-size:12px;color:#5B6B63">NV-0391 · IT · HCM CN1</div></div><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 10px">Chờ duyệt cuối</span></div>
+        <div style="flex:1;overflow:hidden;padding:18px 24px">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
+            <div style="background:#F4F7F5;border-radius:9px;padding:11px 13px"><div style="font-size:11.5px;color:#5B6B63">Thời gian</div><div style="font-size:13.5px;font-weight:600;color:#16241D">24/06 → 25/06</div></div>
+            <div style="background:#F4F7F5;border-radius:9px;padding:11px 13px"><div style="font-size:11.5px;color:#5B6B63">Số ngày</div><div style="font-size:13.5px;font-weight:600;color:#16241D">2 ngày</div></div>
+            <div style="background:#F4F7F5;border-radius:9px;padding:11px 13px;grid-column:span 2"><div style="font-size:11.5px;color:#5B6B63">Lý do</div><div style="font-size:13px;color:#16241D">Sốt cao, có chỉ định nghỉ của bác sĩ.</div></div>
+            <div style="background:#E7EEFB;border:1px solid #cfe6d1;border-radius:9px;padding:11px 13px;grid-column:span 2;display:flex;align-items:center;gap:10px"><span style="font-size:18px">📎</span><span style="font-size:12.5px;color:#2457A8;font-weight:600">giay_benh.jpg</span><span style="font-size:12px;color:#2457A8;margin-left:auto">Xem ›</span></div>
+          </div>
+          <!-- 3-level timeline -->
+          <div style="font-size:12px;font-weight:700;color:#16345E;text-transform:uppercase;letter-spacing:.05em;margin-bottom:12px">Luồng duyệt 3 cấp</div>
+          <div style="display:flex;align-items:flex-start">
+            <div style="flex:1;text-align:center"><div style="width:30px;height:30px;border-radius:50%;background:#2E7D32;color:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px">✓</div><div style="font-size:11.5px;font-weight:600;color:#16241D;margin-top:6px">Nhân viên</div><div style="font-size:10.5px;color:#9aa8a1">Đã gửi</div></div>
+            <div style="flex:0.6;height:2px;background:#2E7D32;margin-top:15px"></div>
+            <div style="flex:1;text-align:center"><div style="width:30px;height:30px;border-radius:50%;background:#2E7D32;color:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:14px">✓</div><div style="font-size:11.5px;font-weight:600;color:#16241D;margin-top:6px">Quản lý</div><div style="font-size:10.5px;color:#2E7D32">Đã duyệt</div></div>
+            <div style="flex:0.6;height:2px;background:#cdd6d1;margin-top:15px"></div>
+            <div style="flex:1;text-align:center"><div style="width:30px;height:30px;border-radius:50%;background:#fff;border:2px solid #F9A825;color:#a9791a;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">3</div><div style="font-size:11.5px;font-weight:700;color:#a9791a;margin-top:6px">Quản trị</div><div style="font-size:10.5px;color:#a9791a">← bạn ở đây</div></div>
+          </div>
+          <div style="margin-top:16px"><div style="font-size:12px;color:#5B6B63;margin-bottom:6px">Ghi chú / lý do (nếu từ chối)</div><div style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:10px 12px;height:42px">Nhập lý do…</div></div>
+        </div>
+        <div style="padding:16px 24px;border-top:1px solid #E2E8E5;display:flex;gap:10px"><button style="flex:1;font-family:inherit;font-size:14px;font-weight:700;color:#D32F2F;background:#FBE7E7;border:none;border-radius:10px;padding:13px">Từ chối</button><button style="flex:1.6;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:10px;padding:13px;box-shadow:0 2px 8px rgba(44,104,201,.3)">Duyệt cấp cuối</button></div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE E — DASHBOARD ============ -->
+  <div id="mod-dash" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">05</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Dashboard điều hành</h2>
+    <span style="font-size:13.5px;color:#5B6B63">S19 Tổng quan 3 nhóm · S20 Bộ lọc tháng/năm · phòng ban · địa điểm</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S19+S20</span> Dashboard điều hành <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:1100px;height:880px;background:#F4F7F5;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex">
+        <div style="width:212px;background:#16345E;padding:20px 14px;display:flex;flex-direction:column;color:#fff;flex:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 8px 22px"><div style="width:32px;height:32px;border-radius:9px;background:#2C68C9;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.26L21.6 9l-4.8 4.6 1.2 6.6L12 17.1 6 20.2l1.2-6.6L2.4 9l6.7-.74L12 2z" fill="#fff"/></svg></div><span style="font-size:15px;font-weight:800">5Sao HRM</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.12);border-radius:9px;padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">▦</span>Dashboard</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">◷</span>Chấm công</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">☷</span>Nhân sự</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">⊟</span>Nghỉ phép</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px"><span style="width:18px;text-align:center">⚙</span>Cấu hình</div>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px"><div style="width:34px;height:34px;border-radius:50%;background:#2C68C9;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">PH</div><div style="line-height:1.2"><div style="font-size:13px;font-weight:600">Phạm Hà</div><div style="font-size:11.5px;color:rgba(255,255,255,.6)">Quản trị</div></div></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <!-- S20 filter bar -->
+          <div style="background:#fff;border-bottom:1px solid #E2E8E5;padding:14px 26px;display:flex;align-items:center;justify-content:space-between;flex:none">
+            <div style="font-size:17px;font-weight:800;color:#16345E">Dashboard điều hành</div>
+            <div style="display:flex;gap:8px"><span style="font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border-radius:8px;padding:8px 13px">Tháng 6 / 2026 ▾</span><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:8px 13px">Tất cả phòng ban ▾</span><span style="font-size:12.5px;color:#16241D;background:#F4F7F5;border:1px solid #E2E8E5;border-radius:8px;padding:8px 13px">Tất cả địa điểm ▾</span></div>
+          </div>
+          <div style="flex:1;overflow:hidden;padding:22px 26px">
+            <!-- GROUP 1: Nhân sự -->
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:12px;font-weight:800;color:#2457A8;background:#E7EEFB;border-radius:6px;padding:4px 9px">01</span><span style="font-size:14px;font-weight:800;color:#16345E">Tổng quan nhân sự</span></div>
+            <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:14px;margin-bottom:24px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px;display:flex;gap:18px;align-items:center"><div><div style="font-size:12px;color:#5B6B63">Tổng nhân sự</div><div style="font-size:30px;font-weight:900;color:#16345E">248</div></div><div style="flex:1;display:flex;gap:8px"><div style="flex:1;text-align:center;background:#E6F2E7;border-radius:9px;padding:8px"><div style="font-size:17px;font-weight:800;color:#2E7D32">186</div><div style="font-size:10.5px;color:#3a7a3e">Chính thức</div></div><div style="flex:1;text-align:center;background:#FEF4DC;border-radius:9px;padding:8px"><div style="font-size:17px;font-weight:800;color:#a9791a">42</div><div style="font-size:10.5px;color:#a9791a">Thử việc</div></div><div style="flex:1;text-align:center;background:#E7EEFB;border-radius:9px;padding:8px"><div style="font-size:17px;font-weight:800;color:#2457A8">20</div><div style="font-size:10.5px;color:#2457A8">TTS</div></div></div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12px;color:#5B6B63;margin-bottom:10px">Theo phòng ban</div><div style="display:flex;flex-direction:column;gap:7px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:60px">Marketing</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:78%;height:100%;border-radius:4px;background:#2C68C9"></div></div><span style="font-size:11px;color:#5B6B63">72</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:60px">IT</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:62%;height:100%;border-radius:4px;background:#2C68C9"></div></div><span style="font-size:11px;color:#5B6B63">58</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:60px">Kinh doanh</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:95%;height:100%;border-radius:4px;background:#2C68C9"></div></div><span style="font-size:11px;color:#5B6B63">88</span></div></div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12px;color:#5B6B63;margin-bottom:10px">Theo địa điểm</div><div style="display:flex;flex-direction:column;gap:7px"><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:54px">Hà Nội</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:88%;height:100%;border-radius:4px;background:#16345E"></div></div><span style="font-size:11px;color:#5B6B63">130</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:54px">HCM</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:60%;height:100%;border-radius:4px;background:#16345E"></div></div><span style="font-size:11px;color:#5B6B63">82</span></div><div style="display:flex;align-items:center;gap:8px"><span style="font-size:11.5px;color:#16241D;width:54px">Đà Nẵng</span><div style="flex:1;height:7px;border-radius:4px;background:#eef2f0"><div style="width:26%;height:100%;border-radius:4px;background:#16345E"></div></div><span style="font-size:11px;color:#5B6B63">36</span></div></div></div>
+            </div>
+            <!-- GROUP 2: Chấm công -->
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:12px;font-weight:800;color:#a9791a;background:#FEF4DC;border-radius:6px;padding:4px 9px">02</span><span style="font-size:14px;font-weight:800;color:#16345E">Tổng quan chấm công</span><span style="font-size:12px;color:#9aa8a1">· tháng 6/2026</span></div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:24px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:14px"><div style="font-size:12px;font-weight:700;color:#16345E;margin-bottom:10px">🔻 Đi trễ nhiều nhất</div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">1. Lê Phương</span><span style="font-size:12.5px;font-weight:700;color:#a9791a">9 lần</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">2. Vũ Đức</span><span style="font-size:12.5px;font-weight:700;color:#a9791a">6 lần</span></div><div style="display:flex;justify-content:space-between;padding:5px 0"><span style="font-size:12.5px;color:#16241D">3. Trần Lâm</span><span style="font-size:12.5px;font-weight:700;color:#a9791a">4 lần</span></div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:14px"><div style="font-size:12px;font-weight:700;color:#16345E;margin-bottom:10px">⏱ Quên chấm nhiều nhất</div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">1. Ngô Huy</span><span style="font-size:12.5px;font-weight:700;color:#D32F2F">5 lần</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">2. Đặng Minh</span><span style="font-size:12.5px;font-weight:700;color:#D32F2F">3 lần</span></div><div style="display:flex;justify-content:space-between;padding:5px 0"><span style="font-size:12.5px;color:#16241D">3. Nguyễn An</span><span style="font-size:12.5px;font-weight:700;color:#D32F2F">2 lần</span></div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:14px"><div style="font-size:12px;font-weight:700;color:#16345E;margin-bottom:10px">⚡ Tăng ca nhiều nhất</div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">1. Trần Lâm</span><span style="font-size:12.5px;font-weight:700;color:#2457A8">28h</span></div><div style="display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">2. Ngô Huy</span><span style="font-size:12.5px;font-weight:700;color:#2457A8">22h</span></div><div style="display:flex;justify-content:space-between;padding:5px 0"><span style="font-size:12.5px;color:#16241D">3. Nguyễn An</span><span style="font-size:12.5px;font-weight:700;color:#2457A8">14h</span></div></div>
+            </div>
+            <!-- GROUP 3: Nghỉ phép -->
+            <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px"><span style="font-size:12px;font-weight:800;color:#2457A8;background:#E7EEFB;border-radius:6px;padding:4px 9px">03</span><span style="font-size:14px;font-weight:800;color:#16345E">Tổng quan nghỉ phép</span></div>
+            <div style="display:grid;grid-template-columns:1.3fr 1fr;gap:14px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;color:#16345E;margin-bottom:14px">Cơ cấu loại nghỉ trong tháng</div><div style="display:flex;align-items:flex-end;gap:16px;height:90px"><div style="flex:1;text-align:center"><div style="background:#2C68C9;height:70px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">Bệnh</div></div><div style="flex:1;text-align:center"><div style="background:#9DB9EC;height:46px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">Nửa ngày</div></div><div style="flex:1;text-align:center"><div style="background:#F9A825;height:54px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">Đi trễ</div></div><div style="flex:1;text-align:center"><div style="background:#F9A825;height:34px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">Về sớm</div></div><div style="flex:1;text-align:center"><div style="background:#16345E;height:24px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">K.lương</div></div><div style="flex:1;text-align:center"><div style="background:#9DB9EC;height:40px;border-radius:5px 5px 0 0"></div><div style="font-size:10.5px;color:#5B6B63;margin-top:5px">Online</div></div></div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12px;font-weight:700;color:#16345E;margin-bottom:10px">🏖 Xin nghỉ nhiều nhất</div><div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">1. Vũ Đức</span><span style="font-size:12.5px;font-weight:700;color:#16345E">7 đơn</span></div><div style="display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#16241D">2. Lê Phương</span><span style="font-size:12.5px;font-weight:700;color:#16345E">5 đơn</span></div><div style="display:flex;justify-content:space-between;padding:6px 0"><span style="font-size:12.5px;color:#16241D">3. Trần Lâm</span><span style="font-size:12.5px;font-weight:700;color:#16345E">4 đơn</span></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<!-- ============ MODULE F — BỔ SUNG: BIẾN THỂ & VAI TRÒ ============ -->
+  <div id="mod-extra" style="max-width:1280px;margin:0 auto 24px;display:flex;align-items:center;gap:14px">
+    <span style="font-size:12px;font-weight:800;letter-spacing:.16em;color:#2C68C9;background:#fff;border:1px solid #E2E8E5;border-radius:6px;padding:5px 10px">06</span>
+    <h2 style="font-size:22px;font-weight:900;color:#16345E;letter-spacing:-.01em">Bổ sung — biến thể nền tảng &amp; vai trò</h2>
+    <span style="font-size:13.5px;color:#5B6B63">Home Quản lý · S16 Desktop · S17 Mobile · S18 Mobile</span>
+    <div style="flex:1;height:1px;background:#d3dbd7"></div>
+  </div>
+
+  <div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:56px">
+
+    <!-- Manager Home Desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S2</span> Trang chủ theo vai trò <span style="font-size:11px;font-weight:600;color:#fff;background:#F9A825;border-radius:5px;padding:2px 7px">Desktop · Quản lý</span></div>
+      <div style="width:1000px;height:620px;background:#F4F7F5;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex">
+        <div style="width:212px;background:#16345E;padding:20px 14px;display:flex;flex-direction:column;color:#fff;flex:none">
+          <div style="display:flex;align-items:center;gap:10px;padding:4px 8px 22px"><div style="width:32px;height:32px;border-radius:9px;background:#2C68C9;display:flex;align-items:center;justify-content:center"><svg width="18" height="18" viewBox="0 0 24 24" fill="none"><path d="M12 2l2.9 6.26L21.6 9l-4.8 4.6 1.2 6.6L12 17.1 6 20.2l1.2-6.6L2.4 9l6.7-.74L12 2z" fill="#fff"/></svg></div><span style="font-size:15px;font-weight:800">5Sao HRM</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;font-weight:600;background:rgba(255,255,255,.12);border-radius:9px;padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">▦</span>Tổng quan đội</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">⊟</span>Chờ tôi duyệt <span style="margin-left:auto;font-size:11px;font-weight:700;color:#16345E;background:#F9A825;border-radius:999px;padding:1px 7px">4</span></div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px;margin-bottom:3px"><span style="width:18px;text-align:center">◷</span>Chấm công đội</div>
+          <div style="display:flex;align-items:center;gap:11px;font-size:13.5px;color:rgba(255,255,255,.78);padding:10px 12px"><span style="width:18px;text-align:center">☷</span>Nhân viên (phạm vi)</div>
+          <div style="margin-top:auto;display:flex;align-items:center;gap:10px;border-top:1px solid rgba(255,255,255,.12);padding-top:14px"><div style="width:34px;height:34px;border-radius:50%;background:#F9A825;color:#16345E;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">ĐM</div><div style="line-height:1.2"><div style="font-size:13px;font-weight:600">Đặng Minh</div><div style="font-size:11.5px;color:rgba(255,255,255,.6)">Quản lý · KD</div></div></div>
+        </div>
+        <div style="flex:1;display:flex;flex-direction:column;overflow:hidden">
+          <div style="height:60px;background:#fff;border-bottom:1px solid #E2E8E5;display:flex;align-items:center;justify-content:space-between;padding:0 26px;flex:none"><div style="font-size:17px;font-weight:800;color:#16345E">Xin chào, Minh 👋 <span style="font-size:12.5px;font-weight:500;color:#9aa8a1">· Phòng Kinh doanh</span></div><div style="font-size:18px">🔔</div></div>
+          <div style="flex:1;overflow:hidden;padding:24px 26px">
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:22px">
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">NV trong phạm vi</div><div style="font-size:26px;font-weight:900;color:#16345E;margin-top:4px">22</div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">Đã chấm hôm nay</div><div style="font-size:26px;font-weight:900;color:#16345E;margin-top:4px">20</div></div>
+              <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:16px"><div style="font-size:12.5px;color:#5B6B63">Đi trễ hôm nay</div><div style="font-size:26px;font-weight:900;color:#a9791a;margin-top:4px">3</div></div>
+              <div style="background:#F9A825;border-radius:12px;padding:16px;color:#16345E"><div style="font-size:12.5px;opacity:.85">Chờ tôi duyệt</div><div style="font-size:26px;font-weight:900;margin-top:4px">4</div><div style="font-size:11.5px;margin-top:2px">Cấp 1</div></div>
+            </div>
+            <div style="background:#fff;border:1px solid #E2E8E5;border-radius:12px;padding:18px">
+              <div style="font-size:14px;font-weight:700;color:#16345E;margin-bottom:14px">Chờ tôi duyệt (cấp 1)</div>
+              <div style="display:flex;flex-direction:column;gap:10px">
+                <div style="display:flex;align-items:center;gap:12px;padding-bottom:11px;border-bottom:1px solid #eef2f0"><div style="width:34px;height:34px;border-radius:50%;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">LP</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Lê Phương · Đi trễ 1.5h</div><div style="font-size:12px;color:#5B6B63">23/06 · giảm 1.5/8 công</div></div><div style="display:flex;gap:8px"><button style="font-family:inherit;font-size:12px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:7px;padding:7px 12px">Từ chối</button><button style="font-family:inherit;font-size:12px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:7px;padding:7px 12px">Duyệt cấp 1</button></div></div>
+                <div style="display:flex;align-items:center;gap:12px"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">VD</div><div style="flex:1"><div style="font-size:13.5px;font-weight:600;color:#16241D">Vũ Đức · Làm online</div><div style="font-size:12px;color:#5B6B63">26/06 · cả ngày</div></div><div style="display:flex;gap:8px"><button style="font-family:inherit;font-size:12px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:7px;padding:7px 12px">Từ chối</button><button style="font-family:inherit;font-size:12px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:7px;padding:7px 12px">Duyệt cấp 1</button></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S16 Desktop -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S16</span> Đơn của tôi <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Desktop</span></div>
+      <div style="width:560px;height:620px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:18px 24px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:15px;font-weight:800;color:#16345E">Đơn của tôi</div><button style="font-family:inherit;font-size:13px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">+ Tạo đơn</button></div>
+        <div style="display:flex;gap:6px;padding:14px 24px 0;border-bottom:1px solid #E2E8E5"><span style="font-size:13px;font-weight:700;color:#2C68C9;padding:8px 4px 12px;border-bottom:2px solid #2C68C9">Tất cả (4)</span><span style="font-size:13px;color:#5B6B63;padding:8px 12px 12px">Chờ (1)</span><span style="font-size:13px;color:#5B6B63;padding:8px 12px 12px">Đã duyệt (2)</span><span style="font-size:13px;color:#5B6B63;padding:8px 12px 12px">Từ chối (1)</span></div>
+        <div style="flex:1;overflow:hidden;padding:0">
+          <div style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr 1.1fr;gap:10px;padding:12px 24px;background:#F4F7F5;border-bottom:1px solid #E2E8E5;font-size:11.5px;font-weight:700;color:#5B6B63;text-transform:uppercase"><span>Loại</span><span>Thời gian</span><span>Ảnh hưởng công</span><span>Trạng thái</span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr 1.1fr;gap:10px;padding:14px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">Bổ sung công · quên out</span><span style="color:#5B6B63">17/06 · ra 17:05</span><span style="color:#5B6B63">—</span><span><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:3px 9px">Chờ QL</span></span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr 1.1fr;gap:10px;padding:14px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">Đi trễ 1.5h</span><span style="color:#5B6B63">20/06</span><span style="font-family:'Roboto Mono',monospace;color:#D32F2F">−1.5/8</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Đã duyệt</span></span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr 1.1fr;gap:10px;padding:14px 24px;border-bottom:1px solid #f0f3f1;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">Làm online</span><span style="color:#5B6B63">05/06 · cả ngày</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">×½</span><span><span style="font-size:11px;font-weight:600;color:#2E7D32;background:#E6F2E7;border-radius:999px;padding:3px 9px">Đã duyệt</span></span></div>
+          <div style="display:grid;grid-template-columns:1.4fr 1.3fr 1fr 1.1fr;gap:10px;padding:14px 24px;align-items:center;font-size:13px"><span style="color:#16241D;font-weight:600">Nghỉ nửa ngày</span><span style="color:#5B6B63">12/06 · chiều</span><span style="font-family:'Roboto Mono',monospace;color:#16241D">4/8</span><span><span style="font-size:11px;font-weight:600;color:#b3261e;background:#FBE7E7;border-radius:999px;padding:3px 9px">Từ chối</span></span></div>
+        </div>
+        <div style="padding:14px 24px;border-top:1px solid #E2E8E5;font-size:12.5px;color:#5B6B63">Đơn bị từ chối có thể xem lý do &amp; gửi lại.</div>
+      </div>
+    </div>
+  </div>
+
+<div style="display:flex;gap:40px;align-items:flex-start;margin-bottom:64px">
+
+    <!-- S17 mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S17</span> Hàng chờ duyệt <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile · Quản lý</span></div>
+      <div style="width:300px;height:600px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;justify-content:space-between;align-items:center"><div style="font-size:16px;font-weight:800;color:#16345E">Chờ tôi duyệt</div><span style="font-size:11px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 9px">4 đơn</span></div></div>
+        <div style="display:flex;gap:6px;padding:12px 16px 0"><span style="font-size:11.5px;font-weight:600;color:#fff;background:#2C68C9;border-radius:999px;padding:6px 12px">Tất cả</span><span style="font-size:11.5px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 12px">Nghỉ phép</span><span style="font-size:11.5px;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:999px;padding:6px 12px">Bổ sung</span></div>
+        <div style="flex:1;overflow:hidden;padding:14px">
+          <div style="display:flex;flex-direction:column;gap:10px">
+            <div style="background:#fff;border-radius:13px;padding:13px"><div style="display:flex;align-items:center;gap:11px;margin-bottom:10px"><div style="width:34px;height:34px;border-radius:50%;background:#FEF4DC;color:#a9791a;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">LP</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Lê Phương</div><div style="font-size:11.5px;color:#5B6B63">Đi trễ 1.5h · 23/06</div></div><span style="font-size:10px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:3px 8px">Cấp 1</span></div><div style="display:flex;gap:8px"><button style="flex:1;font-family:inherit;font-size:12.5px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:9px;padding:9px">Từ chối</button><button style="flex:1.4;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:9px">Duyệt</button></div></div>
+            <div style="background:#fff;border-radius:13px;padding:13px"><div style="display:flex;align-items:center;gap:11px;margin-bottom:10px"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">VD</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Vũ Đức</div><div style="font-size:11.5px;color:#5B6B63">Làm online · 26/06</div></div><span style="font-size:10px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:3px 8px">Cấp 1</span></div><div style="display:flex;gap:8px"><button style="flex:1;font-family:inherit;font-size:12.5px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:9px;padding:9px">Từ chối</button><button style="flex:1.4;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:9px">Duyệt</button></div></div>
+            <div style="background:#fff;border-radius:13px;padding:13px"><div style="display:flex;align-items:center;gap:11px;margin-bottom:10px"><div style="width:34px;height:34px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700">NA</div><div style="flex:1"><div style="font-size:13.5px;font-weight:700;color:#16241D">Nguyễn An</div><div style="font-size:11.5px;color:#5B6B63">Bổ sung công · quên out 17/06</div></div><span style="font-size:10px;font-weight:600;color:#5B6B63;background:#F0F3F1;border-radius:999px;padding:3px 8px">Cấp 1</span></div><div style="display:flex;gap:8px"><button style="flex:1;font-family:inherit;font-size:12.5px;font-weight:600;color:#D32F2F;background:#FBE7E7;border:none;border-radius:9px;padding:9px">Từ chối</button><button style="flex:1.4;font-family:inherit;font-size:12.5px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:9px">Duyệt</button></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- S18 mobile -->
+    <div style="flex:none">
+      <div style="font-size:13px;font-weight:700;color:#16345E;margin-bottom:10px;display:flex;align-items:center;gap:8px"><span style="font-family:'Roboto Mono',monospace;font-size:11px;font-weight:500;color:#fff;background:#2C68C9;border-radius:5px;padding:2px 7px">S18</span> Chi tiết đơn + duyệt <span style="font-size:11px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #E2E8E5;border-radius:5px;padding:2px 7px">Mobile</span></div>
+      <div style="width:300px;height:600px;background:#F4F7F5;border-radius:30px;box-shadow:0 8px 30px rgba(22,52,94,.18);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 20px 12px;border-bottom:1px solid #eef2f0"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:10px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="display:flex;align-items:center;gap:10px"><span style="color:#5B6B63">‹</span><div style="font-size:16px;font-weight:800;color:#16345E">Chi tiết đơn</div></div></div>
+        <div style="flex:1;overflow:hidden;padding:16px">
+          <div style="background:#fff;border-radius:13px;padding:14px;margin-bottom:12px;display:flex;align-items:center;gap:11px"><div style="width:40px;height:40px;border-radius:50%;background:#E7EEFB;color:#2457A8;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700">TL</div><div style="flex:1"><div style="font-size:14px;font-weight:800;color:#16345E">Trần Lâm</div><div style="font-size:11.5px;color:#5B6B63">Nghỉ bệnh · NV-0391</div></div><span style="font-size:10.5px;font-weight:600;color:#a9791a;background:#FEF4DC;border-radius:999px;padding:4px 9px">Chờ cuối</span></div>
+          <div style="background:#fff;border-radius:13px;padding:6px 14px;margin-bottom:12px"><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#5B6B63">Thời gian</span><span style="font-size:12.5px;color:#16241D">24/06 → 25/06</span></div><div style="display:flex;justify-content:space-between;padding:9px 0;border-bottom:1px solid #f0f3f1"><span style="font-size:12.5px;color:#5B6B63">Số ngày</span><span style="font-size:12.5px;color:#16241D">2 ngày</span></div><div style="display:flex;justify-content:space-between;align-items:center;padding:9px 0"><span style="font-size:12.5px;color:#5B6B63">Đính kèm</span><span style="font-size:12px;color:#2457A8;font-weight:600">📎 giay_benh.jpg</span></div></div>
+          <!-- compact 3-level -->
+          <div style="background:#fff;border-radius:13px;padding:14px;margin-bottom:12px"><div style="font-size:11px;font-weight:700;color:#5B6B63;text-transform:uppercase;margin-bottom:12px">Luồng duyệt</div><div style="display:flex;align-items:center"><div style="text-align:center;flex:1"><div style="width:26px;height:26px;border-radius:50%;background:#2E7D32;color:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:12px">✓</div><div style="font-size:10px;color:#16241D;margin-top:4px">NV</div></div><div style="flex:.5;height:2px;background:#2E7D32"></div><div style="text-align:center;flex:1"><div style="width:26px;height:26px;border-radius:50%;background:#2E7D32;color:#fff;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:12px">✓</div><div style="font-size:10px;color:#16241D;margin-top:4px">QL</div></div><div style="flex:.5;height:2px;background:#cdd6d1"></div><div style="text-align:center;flex:1"><div style="width:26px;height:26px;border-radius:50%;background:#fff;border:2px solid #F9A825;color:#a9791a;margin:0 auto;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700">3</div><div style="font-size:10px;font-weight:700;color:#a9791a;margin-top:4px">QT</div></div></div></div>
+          <div style="font-size:12px;color:#5B6B63;margin-bottom:6px">Ghi chú (nếu từ chối)</div>
+          <div style="font-size:13px;color:#9aa8a1;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:10px 12px">Nhập lý do…</div>
+        </div>
+        <div style="padding:14px 16px;border-top:1px solid #eef2f0;background:#fff;display:flex;gap:10px"><button style="flex:1;font-family:inherit;font-size:14px;font-weight:700;color:#D32F2F;background:#FBE7E7;border:none;border-radius:11px;padding:13px">Từ chối</button><button style="flex:1.6;font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:11px;padding:13px">Duyệt cấp cuối</button></div>
+      </div>
+    </div>
+  </div>
+
+<div style="max-width:1280px;margin:0 auto 14px;font-size:13px;color:#5B6B63"><span style="font-weight:700;color:#16345E">Trạng thái dùng chung</span> — error · empty · loading · toast/modal (brief mục 8)</div>
+
+  <div style="display:flex;gap:32px;align-items:flex-start;margin-bottom:64px;flex-wrap:wrap">
+
+    <!-- S1 login error -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">S1 · Lỗi đăng nhập / tài khoản khoá</div>
+      <div style="width:280px;height:440px;background:#fff;border-radius:24px;box-shadow:0 8px 30px rgba(22,52,94,.14);overflow:hidden;display:flex;flex-direction:column;padding:26px 22px;justify-content:center">
+        <div style="width:52px;height:52px;border-radius:14px;background:#FBE7E7;display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-size:24px">🔒</div>
+        <div style="font-size:17px;font-weight:800;color:#16345E;text-align:center">Tài khoản đã bị khoá</div>
+        <div style="font-size:13px;color:#5B6B63;text-align:center;margin:6px 0 18px;line-height:1.5">Tài khoản này đang ở trạng thái Khoá nên không thể đăng nhập. Liên hệ Quản trị để được mở lại.</div>
+        <div style="font-size:13px;color:#16241D;background:#fff;border:1px solid #cdd6d1;border-radius:10px;padding:11px 13px;margin-bottom:10px">an.nguyen@5sao.vn</div>
+        <div style="font-size:13px;color:#16241D;background:#fff;border:1px solid #f3cccc;border-radius:10px;padding:11px 13px;margin-bottom:8px;letter-spacing:3px">••••••••</div>
+        <div style="font-size:11.5px;color:#b3261e;margin-bottom:16px">⚠ Email hoặc mật khẩu không đúng (lần 2/5).</div>
+        <button style="font-family:inherit;font-size:14px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:10px;padding:13px">Thử lại</button>
+      </div>
+    </div>
+
+    <!-- S4 empty -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">S4 · Empty state</div>
+      <div style="width:420px;height:440px;background:#fff;border-radius:14px;box-shadow:0 8px 30px rgba(22,52,94,.1);overflow:hidden;display:flex;flex-direction:column">
+        <div style="padding:16px 22px;border-bottom:1px solid #E2E8E5;display:flex;justify-content:space-between;align-items:center"><div style="font-size:14px;font-weight:800;color:#16345E">Nhân sự</div><button style="font-family:inherit;font-size:12.5px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:8px;padding:8px 14px">+ Thêm</button></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px;text-align:center"><div style="width:72px;height:72px;border-radius:20px;background:#F4F7F5;display:flex;align-items:center;justify-content:center;font-size:30px;margin-bottom:16px">☷</div><div style="font-size:15px;font-weight:700;color:#16345E">Chưa có nhân viên nào</div><div style="font-size:13px;color:#5B6B63;margin:6px 0 18px;line-height:1.5">Không tìm thấy nhân viên khớp bộ lọc.<br>Thử xoá lọc hoặc thêm nhân viên mới.</div><div style="display:flex;gap:8px"><button style="font-family:inherit;font-size:13px;font-weight:600;color:#16345E;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:9px 14px">Xoá bộ lọc</button><button style="font-family:inherit;font-size:13px;font-weight:600;color:#fff;background:#2C68C9;border:none;border-radius:9px;padding:9px 14px">+ Thêm nhân viên</button></div></div>
+      </div>
+    </div>
+
+    <!-- S16 empty mobile -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">S16 · Empty</div>
+      <div style="width:260px;height:440px;background:#F4F7F5;border-radius:26px;box-shadow:0 8px 30px rgba(22,52,94,.14);overflow:hidden;display:flex;flex-direction:column">
+        <div style="background:#fff;padding:14px 18px 12px;border-bottom:1px solid #eef2f0"><div style="font-size:15px;font-weight:800;color:#16345E">Đơn của tôi</div></div>
+        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center"><div style="width:60px;height:60px;border-radius:18px;background:#fff;display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:14px">⊟</div><div style="font-size:14px;font-weight:700;color:#16345E">Chưa có đơn nào</div><div style="font-size:12.5px;color:#5B6B63;margin:6px 0 16px">Tạo đơn xin nghỉ hoặc bổ sung công khi cần.</div><button style="font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:#2C68C9;border:none;border-radius:10px;padding:11px 18px">+ Tạo đơn mới</button></div>
+      </div>
+    </div>
+
+    <!-- loading + toast + modal -->
+    <div style="flex:none">
+      <div style="font-size:12.5px;font-weight:600;color:#5B6B63;margin-bottom:10px">Loading · Toast · Modal</div>
+      <div style="width:360px;display:flex;flex-direction:column;gap:14px">
+        <!-- skeleton -->
+        <div style="background:#fff;border:1px solid #E2E8E5;border-radius:13px;padding:16px">
+          <div style="font-size:12px;font-weight:700;color:#5B6B63;margin-bottom:12px">Loading skeleton</div>
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px"><div style="width:38px;height:38px;border-radius:50%;background:linear-gradient(90deg,#eef2f0 25%,#e2e8e5 50%,#eef2f0 75%);background-size:400px 100%;animation:shimmer 1.4s infinite"></div><div style="flex:1"><div style="height:11px;width:60%;border-radius:5px;background:linear-gradient(90deg,#eef2f0 25%,#e2e8e5 50%,#eef2f0 75%);background-size:400px 100%;animation:shimmer 1.4s infinite;margin-bottom:7px"></div><div style="height:9px;width:40%;border-radius:5px;background:linear-gradient(90deg,#eef2f0 25%,#e2e8e5 50%,#eef2f0 75%);background-size:400px 100%;animation:shimmer 1.4s infinite"></div></div></div>
+          <div style="height:9px;width:100%;border-radius:5px;background:linear-gradient(90deg,#eef2f0 25%,#e2e8e5 50%,#eef2f0 75%);background-size:400px 100%;animation:shimmer 1.4s infinite;margin-bottom:8px"></div>
+          <div style="height:9px;width:80%;border-radius:5px;background:linear-gradient(90deg,#eef2f0 25%,#e2e8e5 50%,#eef2f0 75%);background-size:400px 100%;animation:shimmer 1.4s infinite"></div>
+        </div>
+        <!-- toast success -->
+        <div style="display:flex;align-items:center;gap:12px;background:#16345E;border-radius:12px;padding:14px 16px;box-shadow:0 6px 20px rgba(22,52,94,.25)"><div style="width:26px;height:26px;border-radius:50%;background:#2E7D32;display:flex;align-items:center;justify-content:center;flex:none"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:#fff">Đã gửi đơn duyệt</div><div style="font-size:11.5px;color:rgba(255,255,255,.7)">Chuyển tới Quản lý cấp 1.</div></div><span style="color:rgba(255,255,255,.5);font-size:16px">✕</span></div>
+        <!-- toast error -->
+        <div style="display:flex;align-items:center;gap:12px;background:#fff;border:1px solid #f3cccc;border-radius:12px;padding:14px 16px"><div style="width:26px;height:26px;border-radius:50%;background:#FBE7E7;color:#D32F2F;display:flex;align-items:center;justify-content:center;flex:none;font-size:14px">!</div><div style="flex:1"><div style="font-size:13px;font-weight:600;color:#b3261e">Mất kết nối máy chủ</div><div style="font-size:11.5px;color:#a23a33">Không lưu được, thử lại sau.</div></div><span style="font-size:12px;font-weight:600;color:#D32F2F">Thử lại</span></div>
+        <!-- modal confirm -->
+        <div style="background:#fff;border:1px solid #E2E8E5;border-radius:13px;padding:18px;box-shadow:0 8px 24px rgba(22,52,94,.12)"><div style="font-size:14px;font-weight:800;color:#16345E;margin-bottom:6px">Khoá tài khoản nhân viên?</div><div style="font-size:12.5px;color:#5B6B63;line-height:1.5;margin-bottom:16px">Nguyễn An sẽ không thể đăng nhập. Dữ liệu lịch sử vẫn được giữ.</div><div style="display:flex;gap:10px;justify-content:flex-end"><button style="font-family:inherit;font-size:13px;font-weight:600;color:#5B6B63;background:#fff;border:1px solid #cdd6d1;border-radius:9px;padding:9px 16px">Huỷ</button><button style="font-family:inherit;font-size:13px;font-weight:700;color:#fff;background:#D32F2F;border:none;border-radius:9px;padding:9px 16px">Khoá tài khoản</button></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!--APPEND-->
+
+  <div style="max-width:1280px;margin:64px auto 0;text-align:center;color:#9aa8a1;font-size:12.5px">5Sao HRM · Design System &amp; Screen Library · © 2026</div>
+</div>
+</x-dc>
+</body>
+</html>

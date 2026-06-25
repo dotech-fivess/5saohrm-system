@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  background: #e7ebe9;
+  color: #16241d;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Scrollbar theo design */
+::-webkit-scrollbar {
+  height: 12px;
+  width: 12px;
+}
+::-webkit-scrollbar-thumb {
+  background: #c4cfc9;
+  border-radius: 8px;
+  border: 3px solid #e7ebe9;
+}
+
+/* Tiện ích shimmer cho skeleton */
+.skeleton {
+  background: linear-gradient(90deg, #eef2f0 25%, #e2e8e5 50%, #eef2f0 75%);
+  background-size: 400px 100%;
+}

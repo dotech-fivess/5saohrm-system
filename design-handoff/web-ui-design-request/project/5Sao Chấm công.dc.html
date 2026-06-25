@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Roboto',system-ui,sans-serif;-webkit-font-smoothing:antialiased;color:#16241D}
+  @keyframes pop{0%{transform:scale(.7);opacity:0}60%{transform:scale(1.05)}100%{transform:scale(1);opacity:1}}
+  @keyframes ripple{0%{transform:scale(1);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+</style>
+</helmet>
+<div style="min-height:100vh;background:#E7EBE9;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px 20px;gap:22px">
+  <div style="text-align:center">
+    <div style="font-size:13px;font-weight:700;letter-spacing:.2em;color:#2C68C9">5SAO HRM · PROTOTYPE</div>
+    <div style="font-size:20px;font-weight:900;color:#16345E;margin-top:2px">Luồng chấm công — bấm thử</div>
+    <a href="5Sao HRM.dc.html" style="font-size:13px;color:#5B6B63;text-decoration:none">‹ Quay lại thư viện màn hình</a>
+  </div>
+
+  <!-- phone -->
+  <div style="width:330px;height:680px;background:#fff;border-radius:34px;box-shadow:0 18px 50px rgba(22,52,94,.22);overflow:hidden;display:flex;flex-direction:column;position:relative">
+    <div style="background:#fff;padding:16px 22px 12px;border-bottom:1px solid #eef2f0;flex:none"><div style="display:flex;justify-content:space-between;align-items:center;font-size:12px;font-weight:600;margin-bottom:12px;color:#16241D"><span>9:41</span><span style="opacity:.6">●●● ▾ ▮</span></div><div style="font-size:17px;font-weight:800;color:#16345E">Chấm công</div></div>
+
+    <div style="flex:1;overflow:hidden;position:relative">
+      <!-- STEP 1: ready -->
+      <div style="position:absolute;inset:0;padding:18px;display:{{ step1Display }};flex-direction:column">
+        <div style="height:118px;border-radius:14px;background:linear-gradient(135deg,#dce8e2,#cfe0d7);position:relative;overflow:hidden;margin-bottom:14px">
+          <div style="position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.5) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.5) 1px,transparent 1px);background-size:22px 22px"></div>
+          <div style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:16px;height:16px;border-radius:50%;background:#2C68C9;border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.25)"></div>
+          <div style="position:absolute;bottom:8px;left:8px;font-size:11px;font-weight:600;color:#16345E;background:rgba(255,255,255,.9);border-radius:7px;padding:4px 9px">📍 {{ location }}</div>
+        </div>
+        <div style="background:#F4F7F5;border-radius:13px;padding:12px 14px;margin-bottom:12px;display:flex;justify-content:space-between;align-items:center"><div><div style="font-size:11.5px;color:#5B6B63">Ca hôm nay · vào 08:00</div><div style="font-size:13.5px;font-weight:700;color:#16345E">Hành chính</div></div><span style="font-size:11px;font-weight:600;color:#178A66;background:#E8F5EF;border-radius:999px;padding:4px 10px">GPS hợp lệ</span></div>
+        <div style="text-align:center;margin:2px 0 14px"><div style="font-family:'Roboto Mono',monospace;font-size:30px;font-weight:500;color:#16345E">{{ clock }}</div><div style="font-size:11.5px;color:#5B6B63">Thứ Hai · 23/06/2026</div></div>
+        <div style="font-size:11.5px;font-weight:500;color:#5B6B63;margin-bottom:7px">Loại làm việc</div>
+        <div style="display:flex;gap:6px;margin-bottom:auto">
+          <div onClick="{{ pickHC }}" style="{{ typeHCStyle }}">HC</div>
+          <div onClick="{{ pickTC120 }}" style="{{ typeTC120Style }}">TC120</div>
+          <div onClick="{{ pickTC150 }}" style="{{ typeTC150Style }}">TC150</div>
+          <div onClick="{{ pickON }}" style="{{ typeONStyle }}">ON</div>
+        </div>
+        <div style="text-align:center"><div onClick="{{ doCheckin }}" style="width:150px;height:150px;border-radius:50%;background:#2C68C9;margin:0 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;box-shadow:0 10px 28px rgba(44,104,201,.4);cursor:pointer;user-select:none"><div style="font-size:30px">●</div><div style="font-size:17px;font-weight:800;margin-top:2px">Check-in</div></div></div>
+      </div>
+
+      <!-- STEP 2: checked in -->
+      <div style="position:absolute;inset:0;padding:18px;display:{{ step2Display }};flex-direction:column">
+        <div style="background:#E6F2E7;border:1px solid #cfe6d1;border-radius:14px;padding:18px;text-align:center;margin-bottom:14px;animation:pop .4s ease"><div style="width:48px;height:48px;border-radius:50%;background:#2E7D32;margin:0 auto 8px;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:15px;font-weight:800;color:#2E7D32">Đã check-in lúc {{ inTime }}</div><div style="font-size:12.5px;color:#3a7a3e;margin-top:2px">Trạng thái: <strong>Hợp lệ</strong> · {{ workType }}</div></div>
+        <div style="background:#F4F7F5;border-radius:13px;padding:14px;margin-bottom:10px">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid #e6ece9"><span style="font-size:12.5px;color:#5B6B63">🕐 Giờ vào (I)</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">{{ inTime }} 🔒</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0"><span style="font-size:12.5px;color:#5B6B63">📍 Định vị</span><span style="font-size:13px;color:#16241D">{{ location }} 🔒</span></div>
+        </div>
+        <div style="font-size:11.5px;color:#9aa8a1;text-align:center;margin-bottom:auto">Thời gian &amp; định vị đã khoá, không thể chỉnh sửa.</div>
+        <div onClick="{{ doCheckout }}" style="background:#16345E;border-radius:14px;padding:16px;text-align:center;cursor:pointer;user-select:none"><div style="font-size:16px;font-weight:700;color:#fff">● Check-out</div></div>
+        <div style="text-align:center;font-size:11.5px;color:#5B6B63;margin-top:8px">Ra dự kiến 17:00</div>
+      </div>
+
+      <!-- STEP 3: checked out -->
+      <div style="position:absolute;inset:0;padding:18px;display:{{ step3Display }};flex-direction:column">
+        <div style="background:#E6F2E7;border:1px solid #cfe6d1;border-radius:14px;padding:18px;text-align:center;margin-bottom:14px;animation:pop .4s ease"><div style="width:48px;height:48px;border-radius:50%;background:#2E7D32;margin:0 auto 8px;display:flex;align-items:center;justify-content:center"><svg width="26" height="26" viewBox="0 0 24 24" fill="none"><path d="M5 12l5 5L20 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg></div><div style="font-size:15px;font-weight:800;color:#2E7D32">Hoàn tất công hôm nay</div><div style="font-size:12.5px;color:#3a7a3e;margin-top:2px">{{ workType }} · {{ inTime }} → {{ outTime }}</div></div>
+        <div style="background:#F4F7F5;border-radius:13px;padding:14px;margin-bottom:12px">
+          <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #e6ece9"><span style="font-size:12.5px;color:#5B6B63">Giờ vào (I)</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">{{ inTime }} 🔒</span></div>
+          <div style="display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #e6ece9"><span style="font-size:12.5px;color:#5B6B63">Giờ ra (O)</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">{{ outTime }} 🔒</span></div>
+          <div style="display:flex;justify-content:space-between;padding:7px 0"><span style="font-size:12.5px;color:#5B6B63">Số giờ làm (O−I)</span><span style="font-family:'Roboto Mono',monospace;font-size:13px;color:#16241D">{{ workedHours }}h</span></div>
+        </div>
+        <div style="background:#2C68C9;border-radius:13px;padding:16px;text-align:center;color:#fff;margin-bottom:auto"><div style="font-size:12px;opacity:.85">Ngày công được tính</div><div style="font-size:30px;font-weight:900;margin-top:2px">{{ dayValue }}</div><div style="font-size:11.5px;opacity:.85;margin-top:2px">{{ ruleNote }}</div></div>
+        <div onClick="{{ reset }}" style="background:#fff;border:1px solid #cdd6d1;border-radius:13px;padding:13px;text-align:center;cursor:pointer;user-select:none;font-size:14px;font-weight:600;color:#16345E">↺ Chấm công lại (demo)</div>
+      </div>
+    </div>
+
+    <!-- bottom nav -->
+    <div style="background:#fff;border-top:1px solid #E2E8E5;display:flex;justify-content:space-around;padding:9px 0 16px;flex:none">
+      <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">▦</div><div style="font-size:10.5px">Trang chủ</div></div>
+      <div style="text-align:center;color:#2C68C9"><div style="font-size:18px">◷</div><div style="font-size:10.5px;font-weight:600">Chấm công</div></div>
+      <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">⊟</div><div style="font-size:10.5px">Nghỉ phép</div></div>
+      <div style="text-align:center;color:#9aa8a1"><div style="font-size:18px">☺</div><div style="font-size:10.5px">Cá nhân</div></div>
+    </div>
+  </div>
+  <div style="font-size:12.5px;color:#9aa8a1">Bấm <strong>Check-in</strong> → <strong>Check-out</strong> để xem quy tắc tính công áp dụng theo thời gian thực.</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { step: 1, type: 'HC', clock: '08:02:15', inTime: '', outTime: '', location: 'Trụ sở Hà Nội' };
+
+  componentDidMount(){
+    this._t = setInterval(() => {
+      const d = new Date();
+      const p = n => String(n).padStart(2,'0');
+      this.setState({ clock: `${p(d.getHours())}:${p(d.getMinutes())}:${p(d.getSeconds())}` });
+    }, 1000);
+  }
+  componentWillUnmount(){ clearInterval(this._t); }
+
+  nowHM(){ const d=new Date(); const p=n=>String(n).padStart(2,'0'); return `${p(d.getHours())}:${p(d.getMinutes())}`; }
+
+  typeStyle(t){
+    const on = this.state.type === t;
+    return `flex:1;text-align:center;font-size:11.5px;font-weight:600;border-radius:8px;padding:8px 0;cursor:pointer;user-select:none;`+
+      (on ? `color:#fff;background:#2C68C9;` : `color:#5B6B63;background:#fff;border:1px solid #E2E8E5;`);
+  }
+
+  computeWork(){
+    // demo: assume ~8.1h worked (full day) for HC; scale for ON; TC by hours
+    const worked = 8.1;
+    const t = this.state.type;
+    let dayValue, ruleNote;
+    if(t === 'HC'){ dayValue = '8/8'; ruleNote = 'A1hc · O−I ≥ 5h → đủ ngày'; }
+    else if(t === 'ON'){ dayValue = '8/8 × ½ = 4/8'; ruleNote = 'A3on · HC × hệ số online ½'; }
+    else if(t === 'TC120'){ dayValue = (worked*1.2).toFixed(1)+'h'; ruleNote = 'A2tc · giờ × hệ số 1.2'; }
+    else { dayValue = (worked*1.5).toFixed(1)+'h'; ruleNote = 'A2tc · giờ × hệ số 1.5'; }
+    return { worked: worked.toFixed(1), dayValue, ruleNote };
+  }
+
+  renderVals(){
+    const s = this.state;
+    const w = this.computeWork();
+    const typeLabel = { HC:'Hành chính', TC120:'Tăng ca 120', TC150:'Tăng ca 150', ON:'Online' }[s.type];
+    return {
+      clock: s.clock,
+      location: s.location,
+      inTime: s.inTime,
+      outTime: s.outTime,
+      workType: typeLabel,
+      workedHours: w.worked,
+      dayValue: w.dayValue,
+      ruleNote: w.ruleNote,
+      step1Display: s.step === 1 ? 'flex' : 'none',
+      step2Display: s.step === 2 ? 'flex' : 'none',
+      step3Display: s.step === 3 ? 'flex' : 'none',
+      typeHCStyle: this.typeStyle('HC'),
+      typeTC120Style: this.typeStyle('TC120'),
+      typeTC150Style: this.typeStyle('TC150'),
+      typeONStyle: this.typeStyle('ON'),
+      pickHC: () => this.setState({ type:'HC' }),
+      pickTC120: () => this.setState({ type:'TC120' }),
+      pickTC150: () => this.setState({ type:'TC150' }),
+      pickON: () => this.setState({ type:'ON' }),
+      doCheckin: () => this.setState({ step:2, inTime: this.nowHM() }),
+      doCheckout: () => this.setState({ step:3, outTime: this.nowHM() }),
+      reset: () => this.setState({ step:1, inTime:'', outTime:'' }),
+    };
+  }
+}
+</script>
+</body>
+</html>
