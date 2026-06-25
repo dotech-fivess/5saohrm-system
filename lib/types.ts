@@ -36,12 +36,18 @@ export type Profile = {
   account_status: AccountStatus;
 };
 
+// Admin toàn quyền. Chấp nhận cả role CŨ (qt_sua/qt_xem) trước khi chạy migration
+// 0012, để tài khoản admin cũ vẫn vào khu desktop thay vì bị đẩy sang portal nhân viên.
+export function isAdmin(role: string): boolean {
+  return role === "admin" || role === "qt_sua" || role === "qt_xem";
+}
+
 // Chỉ Admin dùng khu desktop quản trị; Quản lý & Nhân viên dùng portal mobile.
-export function isAdminArea(role: Role): boolean {
-  return role === "admin";
+export function isAdminArea(role: string): boolean {
+  return isAdmin(role);
 }
 
 // Vai trò có quyền duyệt đơn: Admin (toàn quyền) + Quản lý/Trưởng phòng.
-export function canApprove(role: Role): boolean {
-  return role === "admin" || role === "quan_ly";
+export function canApprove(role: string): boolean {
+  return isAdmin(role) || role === "quan_ly";
 }

@@ -9,7 +9,7 @@ import { AccountStatusButton } from "@/components/account-status-button";
 import { FileManager } from "@/components/file-manager";
 import { EmployeeLocationsEditor } from "@/components/employee-locations-editor";
 import { PageHeader } from "@/components/page-header";
-import { ROLE_LABEL, type Role, type Profile } from "@/lib/types";
+import { ROLE_LABEL, isAdmin, type Role, type Profile } from "@/lib/types";
 
 const TABS = [
   { key: "basic", label: "Thông tin cơ bản" },
@@ -35,7 +35,7 @@ export default async function Page({
     data: { user },
   } = await supabase.auth.getUser();
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user!.id).single();
-  const canEdit = (me as Profile | null)?.role === "admin";
+  const canEdit = isAdmin((me as Profile | null)?.role ?? "");
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_360px]">
