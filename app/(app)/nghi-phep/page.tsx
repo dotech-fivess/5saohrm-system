@@ -33,6 +33,10 @@ export default async function Page({
   const role = (me as Profile | null)?.role ?? "nhan_vien";
   const isHead = (me as any)?.title?.name === "Trưởng phòng";
   const admin = isAdminArea(role);
+  const isManager = role === "quan_ly";
+  // Nút vào hàng duyệt: quản lý → hàng chờ tổng hợp; trưởng phòng → đơn phòng mình
+  const approveHref = isManager ? "/nghi-phep/cho-duyet" : isHead ? "/nghi-phep/duyet-phong" : null;
+  const approveLabel = isManager ? "Hàng chờ duyệt" : "Duyệt đơn phòng";
   const status = searchParams.status ?? "";
 
   let q = supabase
@@ -46,7 +50,7 @@ export default async function Page({
 
   // đếm chờ duyệt: admin = toàn bộ; trưởng phòng = đơn phòng mình (trừ đơn của chính mình)
   let pending = 0;
-  if (admin) {
+  if (admin || isManager) {
     const { count } = await supabase.from("leave_requests").select("*", { count: "exact", head: true }).eq("status", "Chờ");
     pending = count ?? 0;
   } else if (isHead) {
@@ -75,10 +79,10 @@ export default async function Page({
           </div>
         ) : (
           <div className="flex flex-wrap gap-2">
-            {isHead && (
-              <Link href="/nghi-phep/duyet-phong">
+            {approveHref && (
+              <Link href={approveHref}>
                 <Button size="sm" variant="secondary">
-                  <Inbox className="h-4 w-4" /> Duyệt đơn phòng{pending ? ` (${pending})` : ""}
+                  <Inbox className="h-4 w-4" /> {approveLabel}{pending ? ` (${pending})` : ""}
                 </Button>
               </Link>
             )}

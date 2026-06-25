@@ -1,6 +1,6 @@
 import { notFound } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
-import { isAdminArea, type Profile } from "@/lib/types";
+import { canApprove, type Profile } from "@/lib/types";
 import { Card, CardBody } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { ApprovalTimeline } from "@/components/approval-timeline";
@@ -31,7 +31,7 @@ export default async function Page({ params }: { params: { id: string } }) {
   if (!req) notFound();
 
   const steps = req.flow?.approval_steps ?? [];
-  const canDecide = isAdminArea(role) && req.status === "Chờ" && req.flow?.id;
+  const canDecide = canApprove(role) && req.status === "Chờ" && req.flow?.id;
 
   return (
     <div className="mx-auto max-w-[520px] space-y-4">

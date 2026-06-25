@@ -54,12 +54,12 @@ begin
   -- 3 vai trò quản trị
   insert into auth.users (instance_id,id,aud,role,email,encrypted_password,email_confirmed_at,created_at,updated_at,raw_app_meta_data,raw_user_meta_data)
    values ('00000000-0000-0000-0000-000000000000',gen_random_uuid(),'authenticated','authenticated','hr.admin@test.5sao.vn',crypt('Test@123456',gen_salt('bf')),now(),now(),now(),'{"provider":"email","providers":["email"]}','{"full_name":"QA Quản Trị"}') returning id into v_admin;
-  update profiles set role='qt_sua', department_id=d_it, position_id=(select id from positions where department_id=d_it order by name limit 1), contract_type='Chính thức', work_status='Đang làm', phone='0900000001' where id=v_admin;
+  update profiles set role='admin', department_id=d_it, position_id=(select id from positions where department_id=d_it order by name limit 1), contract_type='Chính thức', work_status='Đang làm', phone='0900000001' where id=v_admin;
   insert into employee_locations(employee_id,location_id,shift_id) values (v_admin, locs[1], sh_hc);
 
   insert into auth.users (instance_id,id,aud,role,email,encrypted_password,email_confirmed_at,created_at,updated_at,raw_app_meta_data,raw_user_meta_data)
    values ('00000000-0000-0000-0000-000000000000',gen_random_uuid(),'authenticated','authenticated','hr.view@test.5sao.vn',crypt('Test@123456',gen_salt('bf')),now(),now(),now(),'{"provider":"email","providers":["email"]}','{"full_name":"QA Quản Trị Xem"}') returning id into v_id;
-  update profiles set role='qt_xem', department_id=d_it, position_id=(select id from positions where department_id=d_it order by name limit 1), contract_type='Chính thức', phone='0900000002' where id=v_id;
+  update profiles set role='admin', department_id=d_it, position_id=(select id from positions where department_id=d_it order by name limit 1), contract_type='Chính thức', phone='0900000002' where id=v_id;
   insert into employee_locations(employee_id,location_id,shift_id) values (v_id, locs[1], sh_hc);
 
   insert into auth.users (instance_id,id,aud,role,email,encrypted_password,email_confirmed_at,created_at,updated_at,raw_app_meta_data,raw_user_meta_data)
@@ -149,7 +149,7 @@ begin
     insert into approval_steps(flow_id,level,approver_role,decision,decided_by,decided_at)
       values (v_flow,1,'quan_ly', case when v_st='Chờ' then 'Chờ' else 'Duyệt' end, case when v_st='Chờ' then null else v_mgr end, case when v_st='Chờ' then null else now() end);
     insert into approval_steps(flow_id,level,approver_role,decision,decided_by,decided_at)
-      values (v_flow,2,'qt_sua', case when v_st='Duyệt' then 'Duyệt' when v_st='Từ chối' then 'Từ chối' else 'Chờ' end, case when v_st in ('Duyệt','Từ chối') then v_admin else null end, case when v_st in ('Duyệt','Từ chối') then now() else null end);
+      values (v_flow,2,'admin', case when v_st='Duyệt' then 'Duyệt' when v_st='Từ chối' then 'Từ chối' else 'Chờ' end, case when v_st in ('Duyệt','Từ chối') then v_admin else null end, case when v_st in ('Duyệt','Từ chối') then now() else null end);
     update attendance_adjustments set approval_flow_id=v_flow where id=v_adj;
   end loop;
 

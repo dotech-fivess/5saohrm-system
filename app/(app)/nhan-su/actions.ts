@@ -141,6 +141,21 @@ export async function createEmployee(fd: FormData): Promise<CreateResult> {
   const fullName = (fd.get("full_name") as string)?.trim() || "";
   if (!fullName) return { error: "Họ và tên là bắt buộc." };
 
+  // Trường bắt buộc khi tạo nhân viên (đồng bộ với validate phía client)
+  const required: [string, string][] = [
+    ["gender", "giới tính"],
+    ["phone", "số điện thoại"],
+    ["address", "địa chỉ"],
+    ["department_id", "phòng ban"],
+    ["position_id", "vị trí"],
+    ["title_id", "chức vụ"],
+    ["join_date", "ngày vào làm"],
+  ];
+  const missing = required
+    .filter(([k]) => !String(fd.get(k) || "").trim())
+    .map(([, lbl]) => lbl);
+  if (missing.length) return { error: `Thiếu thông tin bắt buộc: ${missing.join(", ")}.` };
+
   // Email: dùng giá trị admin nhập nếu có, ngược lại tự sinh từ họ tên
   const manual = (fd.get("email_company") as string)?.trim().toLowerCase();
   const base = manual && manual.includes("@") ? manual : `${emailSlug(fullName)}@${EMAIL_DOMAIN}`;

@@ -46,6 +46,8 @@ export function EmployeeForm({
   const [copyErr, setCopyErr] = useState(false);
   const [step, setStep] = useState(1);
   const d = defaults ?? {};
+  // Khi TẠO nhân viên: bắt buộc đủ nhân thân + công việc (chỉ áp dụng cho mode create)
+  const req = mode === "create";
 
   const [avatarPath, setAvatarPath] = useState<string>(d.avatar_url ?? "");
   const [avatarPreview, setAvatarPreview] = useState<string>("");
@@ -73,13 +75,30 @@ export function EmployeeForm({
     setAvatarPath(path);
   }
 
+  // Kiểm tra trường bắt buộc của từng bước. Email công ty TÙY CHỌN (để trống = tự tạo).
+  function validateStep(s: number, fd: FormData): string | null {
+    const t = (k: string) => String(fd.get(k) || "").trim();
+    if (s === 1) {
+      if (!t("full_name")) return "Họ và tên là bắt buộc.";
+      if (req) {
+        if (!t("gender")) return "Vui lòng chọn giới tính.";
+        if (!t("phone")) return "Số điện thoại là bắt buộc.";
+        if (!t("address")) return "Địa chỉ là bắt buộc.";
+      }
+    }
+    if (s === 2 && req) {
+      if (!t("department_id")) return "Vui lòng chọn phòng ban.";
+      if (!t("position_id")) return "Vui lòng chọn vị trí.";
+      if (!t("title_id")) return "Vui lòng chọn chức vụ.";
+      if (!t("join_date")) return "Ngày vào làm là bắt buộc.";
+    }
+    return null;
+  }
+
   function next() {
     setError(null);
-    if (step === 1) {
-      const fd = new FormData(formRef.current!);
-      if (!String(fd.get("full_name") || "").trim()) return setError("Họ và tên là bắt buộc.");
-      // Email công ty là TÙY CHỌN khi tạo (để trống = hệ thống tự tạo)
-    }
+    const err = validateStep(step, new FormData(formRef.current!));
+    if (err) return setError(err);
     setStep((s) => Math.min(3, s + 1));
   }
 
@@ -87,6 +106,14 @@ export function EmployeeForm({
     e.preventDefault();
     setError(null);
     const fd = new FormData(formRef.current!);
+    // Chặn gửi nếu còn thiếu trường bắt buộc — đưa về đúng bước có lỗi
+    for (const s of [1, 2]) {
+      const err = validateStep(s, fd);
+      if (err) {
+        setStep(s);
+        return setError(err);
+      }
+    }
     start(async () => {
       const res = await action(fd);
       if (res?.error) setError(res.error);
@@ -238,7 +265,7 @@ export function EmployeeForm({
                 />
               </div>
               <div>
-                <Label>Số điện thoại</Label>
+                <Label>Số điện thoại{req && " *"}</Label>
                 <Input name="phone" defaultValue={d.phone} />
               </div>
             </div>
@@ -249,7 +276,7 @@ export function EmployeeForm({
             )}
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
               <div>
-                <Label>Giới tính</Label>
+                <Label>Giới tính{req && " *"}</Label>
                 <Select name="gender" defaultValue={d.gender ?? ""}>
                   <option value="">—</option>
                   <option>Nam</option>
@@ -263,7 +290,7 @@ export function EmployeeForm({
               </div>
             </div>
             <div>
-              <Label>Địa chỉ</Label>
+              <Label>Địa chỉ{req && " *"}</Label>
               <Input name="address" defaultValue={d.address} />
             </div>
           </CardBody>
@@ -276,7 +303,7 @@ export function EmployeeForm({
           <CardBody className="space-y-3.5">
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
-                <Label>Phòng ban</Label>
+                <Label>Phòng ban{req && " *"}</Label>
                 <Select
                   name="department_id"
                   value={dept}
@@ -296,7 +323,7 @@ export function EmployeeForm({
                 </Select>
               </div>
               <div>
-                <Label>Vị trí</Label>
+                <Label>Vị trí{req && " *"}</Label>
                 <Select
                   name="position_id"
                   value={pos}
@@ -310,7 +337,7 @@ export function EmployeeForm({
                 </Select>
               </div>
               <div>
-                <Label>Chức vụ</Label>
+                <Label>Chức vụ{req && " *"}</Label>
                 <Select name="title_id" defaultValue={d.title_id ?? ""}>
                   <option value="">—</option>
                   {catalogs.titles.map((x) => (
@@ -340,7 +367,7 @@ export function EmployeeForm({
             </div>
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
               <div>
-                <Label>Ngày vào làm</Label>
+                <Label>Ngày vào làm{req && " *"}</Label>
                 <Input name="join_date" type="date" defaultValue={d.join_date} />
               </div>
               <div>
@@ -425,9 +452,8 @@ export function EmployeeForm({
               <Label>Vai trò (Role)</Label>
               <Select name="role" defaultValue={d.role ?? "nhan_vien"}>
                 <option value="nhan_vien">Nhân viên</option>
-                <option value="quan_ly">Quản lý</option>
-                <option value="qt_xem">Quản trị xem</option>
-                <option value="qt_sua">Quản trị chỉnh sửa</option>
+                <option value="quan_ly">Quản lý / Trưởng phòng</option>
+                <option value="admin">Admin</option>
               </Select>
             </div>
             <div className="text-[12.5px] text-neutral">

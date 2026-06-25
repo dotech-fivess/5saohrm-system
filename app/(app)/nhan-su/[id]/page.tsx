@@ -35,7 +35,7 @@ export default async function Page({
     data: { user },
   } = await supabase.auth.getUser();
   const { data: me } = await supabase.from("profiles").select("role").eq("id", user!.id).single();
-  const canEdit = (me as Profile | null)?.role === "qt_sua";
+  const canEdit = (me as Profile | null)?.role === "admin";
 
   return (
     <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_360px]">

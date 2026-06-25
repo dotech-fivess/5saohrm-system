@@ -1,4 +1,6 @@
+import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
+import { canApprove, type Role } from "@/lib/types";
 import { Card, CardBody } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { ApprovalActions } from "@/components/approval-actions";
@@ -12,6 +14,11 @@ const KIND_LABEL: Record<string, string> = {
 
 export default async function Page() {
   const supabase = createClient();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+  const { data: me } = await supabase.from("profiles").select("role").eq("id", user!.id).single();
+  if (!canApprove(((me as { role?: Role } | null)?.role ?? "nhan_vien") as Role)) redirect("/nghi-phep");
 
   const [{ data: leaves }, { data: adjs }] = await Promise.all([
     supabase

@@ -19,21 +19,21 @@ export function MobileShell({
   greeting,
   fullName,
   unread = 0,
-  isDeptHead = false,
+  approveHref,
   children,
 }: {
   greeting: string;
   fullName: string;
   unread?: number;
-  isDeptHead?: boolean;
+  approveHref?: string;
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  // Trưởng phòng có thêm tab "Duyệt đơn" (chèn trước tab Cá nhân)
-  const TABS = isDeptHead
+  // Quản lý / Trưởng phòng có thêm tab "Duyệt đơn" (chèn trước tab Cá nhân)
+  const TABS = approveHref
     ? [
         ...BASE_TABS.slice(0, 3),
-        { href: "/nghi-phep/duyet-phong", label: "Duyệt đơn", icon: ClipboardCheck },
+        { href: approveHref, label: "Duyệt đơn", icon: ClipboardCheck },
         ...BASE_TABS.slice(3),
       ]
     : BASE_TABS;

@@ -4,6 +4,8 @@ type Step = { level: number; approver_role: string; decision: string };
 
 const ROLE_SHORT: Record<string, string> = {
   quan_ly: "Quản lý",
+  admin: "Quản trị",
+  // tương thích dữ liệu cũ
   qt_sua: "Quản trị",
   qt_xem: "Quản trị",
 };

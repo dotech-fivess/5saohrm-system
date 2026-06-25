@@ -26,8 +26,11 @@ export default async function AppLayout({
   // Hồ sơ chưa được khởi tạo (trường hợp hiếm) — hiển thị tối thiểu.
   const role = profile?.role ?? "nhan_vien";
   const fullName = profile?.full_name ?? user.email ?? "Người dùng";
-  // Trưởng phòng = nhân viên có chức vụ 'Trưởng phòng' → thêm quyền duyệt đơn phòng mình
-  const isDeptHead = profile?.title?.name === "Trưởng phòng";
+  // Trưởng phòng = nhân viên có chức vụ 'Trưởng phòng' → duyệt đơn phòng mình.
+  // Quản lý (role) → duyệt qua hàng chờ tổng hợp toàn công ty.
+  const isHead = profile?.title?.name === "Trưởng phòng";
+  const approveHref =
+    role === "quan_ly" ? "/nghi-phep/cho-duyet" : isHead ? "/nghi-phep/duyet-phong" : undefined;
 
   const { count: unread } = await supabase
     .from("notifications")
@@ -47,7 +50,7 @@ export default async function AppLayout({
     hour < 11 ? "Chào buổi sáng," : hour < 18 ? "Chào buổi chiều," : "Chào buổi tối,";
 
   return (
-    <MobileShell greeting={greeting} fullName={fullName} unread={unread ?? 0} isDeptHead={isDeptHead}>
+    <MobileShell greeting={greeting} fullName={fullName} unread={unread ?? 0} approveHref={approveHref}>
       {children}
     </MobileShell>
   );

@@ -1,11 +1,10 @@
 // Kiểu dùng chung & hằng số cho 5Sao HRM
 
-export type Role = "qt_sua" | "qt_xem" | "quan_ly" | "nhan_vien";
+export type Role = "admin" | "quan_ly" | "nhan_vien";
 
 export const ROLE_LABEL: Record<Role, string> = {
-  qt_sua: "Quản trị chỉnh sửa",
-  qt_xem: "Quản trị xem",
-  quan_ly: "Quản lý",
+  admin: "Admin",
+  quan_ly: "Quản lý / Trưởng phòng",
   nhan_vien: "Nhân viên",
 };
 
@@ -37,7 +36,12 @@ export type Profile = {
   account_status: AccountStatus;
 };
 
-// Vai trò nào dùng khu desktop (quản trị/quản lý) vs portal mobile (nhân viên)
+// Chỉ Admin dùng khu desktop quản trị; Quản lý & Nhân viên dùng portal mobile.
 export function isAdminArea(role: Role): boolean {
-  return role === "qt_sua" || role === "qt_xem" || role === "quan_ly";
+  return role === "admin";
+}
+
+// Vai trò có quyền duyệt đơn: Admin (toàn quyền) + Quản lý/Trưởng phòng.
+export function canApprove(role: Role): boolean {
+  return role === "admin" || role === "quan_ly";
 }
