@@ -73,9 +73,9 @@ export function DesktopShell({
     .toUpperCase();
 
   return (
-    <div className="flex min-h-screen bg-app">
-      {/* Sidebar */}
-      <aside className="flex w-[212px] flex-none flex-col bg-brand px-3.5 py-5 text-white">
+    <div className="flex h-[100dvh] overflow-hidden bg-app">
+      {/* Sidebar — cố định, không cuộn theo nội dung */}
+      <aside className="flex w-[212px] flex-none flex-col overflow-y-auto bg-brand px-3.5 py-5 text-white">
         <div className="flex items-center gap-2.5 px-2 pb-5">
           <div className="flex items-center rounded-[9px] bg-white px-2.5 py-1.5">
             <Image

@@ -61,9 +61,9 @@ export function MobileShell({
   );
 
   return (
-    <div className="mx-auto flex min-h-screen max-w-[480px] flex-col bg-app md:max-w-none">
+    <div className="mx-auto flex h-[100dvh] max-w-[480px] flex-col overflow-hidden bg-app md:max-w-none">
       {/* ===== Top bar (web ≥ md) — thanh điều hướng ngang ===== */}
-      <header className="hidden border-b bg-surface md:block">
+      <header className="hidden shrink-0 border-b bg-surface md:block">
         <div className="mx-auto flex h-[60px] w-full max-w-[960px] items-center gap-6 px-6">
           <Link href="/" className="flex flex-none items-center gap-2">
             <Image src={LOGO} alt="5Sao" width={56} height={19} unoptimized />
@@ -106,7 +106,7 @@ export function MobileShell({
       </header>
 
       {/* ===== Header gradient (mobile < md) ===== */}
-      <header className="bg-gradient-to-b from-primary to-brand px-5 pb-6 pt-4 text-white md:hidden">
+      <header className="shrink-0 bg-gradient-to-b from-primary to-brand px-5 pb-6 pt-4 text-white md:hidden">
         <div className="mb-3.5 flex items-center gap-2">
           <div className="flex items-center rounded-[8px] bg-white px-2 py-1">
             <Image src={LOGO} alt="5Sao" width={54} height={18} unoptimized />
@@ -132,8 +132,8 @@ export function MobileShell({
         {children}
       </main>
 
-      {/* ===== Thanh tab dưới (mobile < md) ===== */}
-      <nav className="flex justify-around border-t bg-surface px-0 pb-3.5 pt-2.5 md:hidden">
+      {/* ===== Thanh tab dưới (mobile < md) — đứng yên, không cuộn theo ===== */}
+      <nav className="flex shrink-0 justify-around border-t bg-surface px-0 pb-3.5 pt-2.5 md:hidden">
         {TABS.map((tab) => {
           const active = tab.href === activeHref;
           const Icon = tab.icon;
