@@ -2,11 +2,16 @@ import Link from "next/link";
 import { createClient } from "@/lib/supabase/server";
 import { isAdminArea, type Profile } from "@/lib/types";
 import { CheckinPanel } from "@/components/checkin-panel";
+import { DayFilter } from "@/components/day-filter";
 import { Card, CardBody } from "@/components/ui/card";
 import { StatusBadge } from "@/components/ui/status-badge";
 import { Clock, PlusCircle } from "lucide-react";
 
-export default async function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: { date?: string };
+}) {
   const supabase = createClient();
   const {
     data: { user },
@@ -15,7 +20,7 @@ export default async function Page() {
   const profile = data as Profile | null;
   const role = profile?.role ?? "nhan_vien";
 
-  if (isAdminArea(role)) return <CompanyBoard />;
+  if (isAdminArea(role)) return <CompanyBoard date={searchParams.date} />;
 
   // Nhân viên: màn chấm công
   return (
@@ -35,14 +40,15 @@ export default async function Page() {
   );
 }
 
-// S13 — Bảng chấm công toàn công ty (hôm nay)
-async function CompanyBoard() {
+// S13 — Bảng chấm công toàn công ty (theo ngày, mặc định hôm nay)
+async function CompanyBoard({ date: dateParam }: { date?: string }) {
   const supabase = createClient();
   const today = new Date().toISOString().slice(0, 10);
+  const date = dateParam || today;
   const { data } = await supabase
     .from("attendance_records")
     .select("id, check_in_at, check_out_at, checkin_status, checkout_status, state, employee:profiles(full_name, employee_code), work_type:work_types(code)")
-    .eq("work_date", today)
+    .eq("work_date", date)
     .order("check_in_at", { ascending: false });
 
   const rows = (data ?? []) as any[];
@@ -50,9 +56,25 @@ async function CompanyBoard() {
   const late = rows.filter((r) => r.checkin_status === "Trễ").length;
   const forgot = rows.filter((r) => r.state === "missing_checkout").length;
 
+  const isToday = date === today;
+  const dateLabel = new Date(date).toLocaleDateString("vi-VN", {
+    weekday: "long",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+    timeZone: "UTC",
+  });
+
   return (
     <div className="space-y-4">
-      <div className="flex items-center justify-end">
+      <div className="flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2.5">
+          <DayFilter date={date} today={today} />
+          <span className="text-[13px] text-neutral">
+            {dateLabel}
+            {isToday && <span className="ml-1 font-semibold text-brand">· Hôm nay</span>}
+          </span>
+        </div>
         <Link href="/cham-cong/thong-ke" className="text-[13px] font-semibold text-primary">
           Thống kê →
         </Link>
@@ -70,7 +92,9 @@ async function CompanyBoard() {
           <span>Nhân viên</span><span>Vào</span><span>Ra</span><span>Loại</span><span>Trạng thái</span>
         </div>
         {rows.length === 0 ? (
-          <div className="px-4 py-10 text-center text-[13px] text-muted">Hôm nay chưa có lượt chấm công.</div>
+          <div className="px-4 py-10 text-center text-[13px] text-muted">
+            {isToday ? "Hôm nay" : "Ngày này"} chưa có lượt chấm công.
+          </div>
         ) : (
           rows.map((r) => (
             <div key={r.id} className="grid grid-cols-[1.8fr_1fr_1fr_0.8fr_1.1fr] items-center gap-2 border-b border-divider px-4 py-3 text-[13px]">
